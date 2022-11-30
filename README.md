@@ -1,6 +1,6 @@
 # Кто хочет стать миллионером?
 
-![cover](https://github.com/mayer1a/iOSAppUI/blob/main/DescriptionImages/cover.png)
+![cover](https://github.com/mayer1a/WhoWantsToBeAMillionaire/blob/main/DescriptionImages/cover.png)
 
 ---
 
