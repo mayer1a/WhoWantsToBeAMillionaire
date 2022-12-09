@@ -65,35 +65,122 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		492A1E5A293B3C6D002A7C7A /* Model */ = {
+		49BB23EF29431B9000D7A3D0 /* MainMenuScreen */ = {
 			isa = PBXGroup;
 			children = (
-				492A1E5B293B3D70002A7C7A /* Question.swift */,
+				49BB23FE29431C7700D7A3D0 /* View */,
+				49BB23FF29431C7C00D7A3D0 /* Controller */,
+			);
+			path = MainMenuScreen;
+			sourceTree = "<group>";
+		};
+		49BB23F029431BD500D7A3D0 /* GameScreen */ = {
+			isa = PBXGroup;
+			children = (
+				49BB23FA29431C6200D7A3D0 /* Model */,
+				49BB23FB29431C6800D7A3D0 /* View */,
+				49BB23FC29431C6C00D7A3D0 /* Controller */,
+			);
+			path = GameScreen;
+			sourceTree = "<group>";
+		};
+		49BB23F129431C0000D7A3D0 /* ScoretableScreen */ = {
+			isa = PBXGroup;
+			children = (
+				49BB23F429431C3E00D7A3D0 /* Model */,
+				49BB23F829431C5700D7A3D0 /* View */,
+				49BB23F929431C5C00D7A3D0 /* Controller */,
+			);
+			path = ScoretableScreen;
+			sourceTree = "<group>";
+		};
+		49BB23F229431C1000D7A3D0 /* HelpPageScreen */ = {
+			isa = PBXGroup;
+			children = (
+				49BB23F629431C4B00D7A3D0 /* View */,
+				49BB23F729431C5100D7A3D0 /* Controller */,
+			);
+			path = HelpPageScreen;
+			sourceTree = "<group>";
+		};
+		49BB23F429431C3E00D7A3D0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
 				492A1E98293E23AA002A7C7A /* Score.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		492A1E5D293B4E3A002A7C7A /* View */ = {
+		49BB23F629431C4B00D7A3D0 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				492A1E83293B7BB2002A7C7A /* MainMenuView.swift */,
-				492A1E87293CB9B8002A7C7A /* GameView.swift */,
-				492A1E8C293DCBAF002A7C7A /* ScoreTableView.swift */,
-				492A1E8E293DD36D002A7C7A /* ScoreTableViewCell.swift */,
-				492A1E92293DEE9C002A7C7A /* ReusableHeaderFooterView.swift */,
 				492A1E9E293EEFFE002A7C7A /* HelpPageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		492A1E5E293B4E46002A7C7A /* Controller */ = {
+		49BB23F729431C5100D7A3D0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				492A1E9C293EEFC9002A7C7A /* HelpPageViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		49BB23F829431C5700D7A3D0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				492A1E8C293DCBAF002A7C7A /* ScoreTableView.swift */,
+				492A1E8E293DD36D002A7C7A /* ScoreTableViewCell.swift */,
+				492A1E92293DEE9C002A7C7A /* ReusableHeaderFooterView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		49BB23F929431C5C00D7A3D0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				492A1E90293DDF6A002A7C7A /* ScoreTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		49BB23FA29431C6200D7A3D0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				492A1E5B293B3D70002A7C7A /* Question.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		49BB23FB29431C6800D7A3D0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				492A1E87293CB9B8002A7C7A /* GameView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		49BB23FC29431C6C00D7A3D0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				492A1E85293CB95C002A7C7A /* GameViewController.swift */,
-				492A1E90293DDF6A002A7C7A /* ScoreTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		49BB23FE29431C7700D7A3D0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				492A1E83293B7BB2002A7C7A /* MainMenuView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		49BB23FF29431C7C00D7A3D0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
 				49C80E9A29376A4600123107 /* MainMenuViewController.swift */,
-				492A1E9C293EEFC9002A7C7A /* HelpPageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -117,12 +204,13 @@
 		49C80E9529376A4600123107 /* WhoWantsToBeAMillionaire */ = {
 			isa = PBXGroup;
 			children = (
-				492A1E5A293B3C6D002A7C7A /* Model */,
-				492A1E5D293B4E3A002A7C7A /* View */,
-				492A1E5E293B4E46002A7C7A /* Controller */,
+				49BB23EF29431B9000D7A3D0 /* MainMenuScreen */,
+				49BB23F029431BD500D7A3D0 /* GameScreen */,
+				49BB23F129431C0000D7A3D0 /* ScoretableScreen */,
+				49BB23F229431C1000D7A3D0 /* HelpPageScreen */,
+				49E2AD8D293B2DA20007DFC8 /* CareTaker */,
 				49E2AD8C293B2D770007DFC8 /* Fundamental */,
 				49E2AD8E293B2DC90007DFC8 /* Game */,
-				49E2AD8D293B2DA20007DFC8 /* CareTaker */,
 				49C80EA229376A4600123107 /* Assets.xcassets */,
 				49C80EA729376A4600123107 /* Info.plist */,
 				49C80EA429376A4600123107 /* LaunchScreen.storyboard */,
