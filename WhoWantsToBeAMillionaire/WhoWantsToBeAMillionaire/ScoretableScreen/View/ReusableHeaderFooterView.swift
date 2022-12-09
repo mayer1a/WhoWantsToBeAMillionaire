@@ -7,12 +7,10 @@
 
 import UIKit
 
-// An object-stub to control the height of the section header and footer
 final class ReusableHeaderFooterView: UITableViewHeaderFooterView {
 
     // MARK: - Properties
 
-    /// Returns the reusable header footer indentifier for scoreboard table view
     static let headerFooterId: String = "HeaderFooterView"
 
     // MARK: - Constructions

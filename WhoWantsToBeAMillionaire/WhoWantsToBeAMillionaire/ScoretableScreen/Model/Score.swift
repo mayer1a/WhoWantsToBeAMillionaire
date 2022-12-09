@@ -7,7 +7,6 @@
 
 import Foundation
 
-/// A codable object that stores data about the user's score for the game
 struct Score: Codable {
     let date: Date
     let score: Int

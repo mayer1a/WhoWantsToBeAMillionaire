@@ -7,7 +7,6 @@
 
 import Foundation
 
-/// An object that stores data about question
 struct Question {
 
     // MARK: - Properties
@@ -36,8 +35,6 @@ extension Question {
 
     // MARK: - Functions
 
-    /// Get a list of hardcore level questions for the game
-    /// - Returns: a collection of prepared questions
     public static func hardcoreQuestions() -> [Question] {
 
         let questions = [
@@ -76,8 +73,6 @@ extension Question {
         return questions
     }
 
-    /// Get a list of easy level questions for the game
-    /// - Returns: a collection of prepared questions
     public static func easyQuestions() -> [Question] {
 
         let questions = [

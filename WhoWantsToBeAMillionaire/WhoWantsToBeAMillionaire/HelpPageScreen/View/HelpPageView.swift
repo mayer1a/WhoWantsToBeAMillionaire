@@ -7,12 +7,10 @@
 
 import UIKit
 
-/// An object that is responsible for the visual component of the help page view
 final class HelpPageView: UIView {
 
     // MARK: - Properties
 
-    /// Returns a label of common rules and available hints
     var rulesLabel: UILabel
 
     // MARK: - Constructions
@@ -31,11 +29,6 @@ final class HelpPageView: UIView {
 
     // MARK: - Functions
 
-    /// Configures a label with the results of common rules and available hints description
-    ///
-    /// - Parameters:
-    ///     - gameInfo: The game session for available hints
-    ///     - hints: Array of hint descriptions
     func rulesLabelConfugure(with gameInfo: GameSession, _ hints: [String]?) {
         guard var hints = hints else { return }
 
@@ -61,11 +54,8 @@ final class HelpPageView: UIView {
 
     // MARK: - Private functions
 
-    /// Configuration of all view cell components
     private func configureViewComponents() {
         backgroundColor = UIColor(named: "LaunchBackgroundColor")
-
-        // Configures common rules label
 
         rulesLabel.textColor = UIColor(named: "helpTextColor")
         rulesLabel.textAlignment = .natural
@@ -75,8 +65,6 @@ final class HelpPageView: UIView {
         rulesLabel.contentMode = .left
         rulesLabel.backgroundColor = UIColor(named: "LaunchBackgroundColor")
         rulesLabel.translatesAutoresizingMaskIntoConstraints = false
-
-        // Configures the scroll view to correctly display a large amount of text
 
         let contentView = UIView()
         contentView.backgroundColor = backgroundColor
@@ -89,8 +77,6 @@ final class HelpPageView: UIView {
         scrollView.addSubview(contentView)
 
         addSubview(scrollView)
-
-        // Configures constraints
 
         NSLayoutConstraint.activate([
             rulesLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
@@ -115,7 +101,6 @@ final class HelpPageView: UIView {
 
 extension HelpPageView {
 
-    /// Returns the large text of common rules and available hints description
     var commonRules: String {
         """
         Игра «Кто хочет стать миллионером?» - это конкурс викторина, в котором участник должен правильно ответить на ряд вопросов с несколькими вариантами ответов, чтобы перейти на следующий уровень. Всего 10 вопросов, каждый вопрос стоит определенной суммы денег, участник не имеит никаких временных ограничений для предоставления ответа. Участники также получают три вида подсказок, чтобы помочь себе, если они застряли на конкретном вопросе.

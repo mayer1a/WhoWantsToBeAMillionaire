@@ -7,27 +7,25 @@
 
 import UIKit
 
-/// An object responsible for interacting with the main menu screen
 final class MainMenuViewController: UIViewController {
-
+    
     // MARK: - Private properties
-
-    /// Returns cast view to **MainMenuView** type
+    
     private var menuView: MainMenuView? {
         return isViewLoaded ? view as? MainMenuView : nil
     }
-
+    
     // MARK: - Lifecycle
-
+    
     override func loadView() {
         view = MainMenuView()
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         menuView?.delegate = self
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = false
@@ -36,7 +34,7 @@ final class MainMenuViewController: UIViewController {
             menuView?.scoreLabelConfigurate()
             return
         }
-
+        
         menuView?.levelSwitchConfigurate(with: Game.shared.isHardcoreLevel)
         menuView?.scoreLabelConfigurate(with: (lastScoreResult.score, lastScoreResult.coins))
     }
@@ -45,11 +43,11 @@ final class MainMenuViewController: UIViewController {
 // MARK: - Extensions
 
 extension MainMenuViewController: MainMenuViewDelegate {
-
+    
     func gameLevelChanged() {
         Game.shared.toggleGameLevel()
     }
-
+    
     func buttonDidTapped(with tag: Int) {
         switch tag {
             case 0:

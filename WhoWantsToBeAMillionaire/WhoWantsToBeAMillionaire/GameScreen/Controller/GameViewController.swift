@@ -7,63 +7,37 @@
 
 import UIKit
 
-/// The methods and properties used by the object to pass information about progress in the current game session
 protocol GameSessionDelegate: AnyObject {
 
-    /// The total number of questions for one gaming session
     var totalQuestionsNumber: Int { get set }
-
-    /// Returns the number of correct user answers within the game session
     var correctAnswers: Int { get }
-
-    /// Returns an array of available hints within the game session
     var hintsAvailable: [Hint] { get }
-
-    /// Returns the number of coins earned by the user within the game session
     var coinsEarned: Int { get }
-
-    /// Returns the number of scores earned by the user within the game session
     var scores: Int { get }
-
-    /// Increases the number of correct user answers by 1 within the game session
     func increaseCorrectAnswersNumber()
-
-    /// Remove used hint from the list of available user hints within the game session
-    /// - Parameters:
-    ///     - usedHint: The **Hint** type hint that the user used
     func removeUsedHint(of hint: Hint)
 }
 
-/// An object responsible for interacting with the game screen
 final class GameViewController: UIViewController {
 
     // MARK: - Properties
 
-    /// The delegate responsible for transmitting the progress of the current game session
     weak var gameSessionDelegate: GameSessionDelegate?
 
     // MARK: - Private properties
 
-    /// Returns cast view to **GameView** type
     private var gameView: GameView? {
         return isViewLoaded ? view as? GameView : nil
     }
 
-    /// Returns an array of questions for the game session
     private lazy var questions: [Question] = {
         return Game.shared.isHardcoreLevel ? Question.hardcoreQuestions() : Question.easyQuestions()
     }()
 
-    /// Returns the number of the current question
-    ///
-    /// - Note: The first number of the question is **zero**
     private lazy var currentQuestion: Int = {
         return 0
     }()
 
-    /// The value of the state of the end of the game
-    ///
-    /// If the game is lost (an incorrect answer is given), the state is **true**
     private lazy var isLost: Bool = {
         return false
     }()
@@ -93,7 +67,6 @@ final class GameViewController: UIViewController {
 
     // MARK: - Private functions
 
-    /// Setup a new question - configure answer buttons, question label and question counter label
     private func setupQuestion() {
         guard let gameSession = gameSessionDelegate else { return }
 
@@ -115,7 +88,6 @@ final class GameViewController: UIViewController {
         }
     }
 
-    /// Use fifty fifty hint and display result on screen
     private func useFiftyFiftyHint() {
         var counter = 0
         var previouslyNumber = -1
@@ -135,7 +107,6 @@ final class GameViewController: UIViewController {
         }
     }
 
-    /// Use auditory help hint and display result on screen
     private func useAuditoryHelpHint() {
         var text = String()
 
@@ -154,12 +125,6 @@ final class GameViewController: UIViewController {
         gameView?.percentsLabelView.isHidden = false
     }
 
-    /// Use call friend hint and display result on screen
-    ///
-    /// Three options for developing hint actions:
-    /// 1. "Friend" doesn't know and all two options may be false
-    /// 2. "Friend" doubts and one of the options is correct
-    /// 3. "Friend" is sure of the answer and his version is the correct answer
     private func useCallFriendHint() {
         let version = Int.random(in: 0..<90)
         var friendAnswer = String()
@@ -179,10 +144,6 @@ final class GameViewController: UIViewController {
         gameView?.percentsLabelView.isHidden = false
     }
 
-    /// Returns a possibly completely incorrect friend's answer
-    ///
-    /// Version #1: "Friend" doesn't know and all two options may be false
-    /// - Returns: A string containing a possibly incorrect friend's answer
     private func getIncorrectFriendAnswer() -> String {
         var answers = [String]()
 
@@ -198,10 +159,6 @@ final class GameViewController: UIViewController {
         return "Привет! Я не знаю ответа на этот вопрос 🙁\nМожет ответ «\(answers[0])» или «\(answers[1])»"
     }
 
-    /// Returns a partially incorrect friend's answer
-    ///
-    /// Version #2: "Friend" doubts and one of the options is correct
-    /// - Returns: A string containing a friend's answer where one is correct and one is incorrect
     private func getPartialIncorrectFriendAnswer() -> String {
         var incorrectNumber = -1
 
@@ -220,10 +177,6 @@ final class GameViewController: UIViewController {
         return "Привет! Я уверен, что это либо «\(answers.popFirst() ?? "")», либо «\(answers.popFirst() ?? "")» 🙂"
     }
 
-    /// Returns a string containing a completely correct friend's answer
-    ///
-    /// Version #3: "Friend" is sure of the answer and his version is the correct answer
-    /// - Returns: A string containing a completely correct friend's answer
     private func getFullCorrectFriendAnswer() -> String {
         let correctAnswer = questions[currentQuestion].correctAnswer
         return "Привет! Прямо в точку, я знаю ответ! 😋\nПравильный вариант - это «\(correctAnswer)»"

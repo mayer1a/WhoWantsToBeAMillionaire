@@ -7,17 +7,14 @@
 
 import UIKit
 
-/// An object responsible for interacting with the scoretable screen
 final class ScoreTableViewController: UIViewController {
 
     // MARK: - Private properties
 
-    /// Returns cast view to **ScoreTableView** type
     private var scoreTableView: ScoreTableView? {
         return isViewLoaded ? view as? ScoreTableView : nil
     }
 
-    /// Returns date formatter for date readability
     private let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy HH:mm"
@@ -39,8 +36,7 @@ final class ScoreTableViewController: UIViewController {
         scoreTableView?.dataSource = self
         scoreTableView?.register(ScoreTableViewCell.self, forCellReuseIdentifier: ScoreTableViewCell.cellId)
         scoreTableView?.register(ReusableHeaderFooterView.self,
-                                      forHeaderFooterViewReuseIdentifier: ReusableHeaderFooterView.headerFooterId)
-
+                                 forHeaderFooterViewReuseIdentifier: ReusableHeaderFooterView.headerFooterId)
 
         navigationController?.navigationBar.topItem?.backButtonTitle = "Назад"
 

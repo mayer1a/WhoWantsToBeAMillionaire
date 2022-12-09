@@ -7,18 +7,13 @@
 
 import UIKit
 
-/// An object responsible for displaying scoreboard data in a cell
 class ScoreTableViewCell: UITableViewCell {
 
     // MARK: - Properties
 
-    /// Returns the reusable cell indentifier for scoreboard table view
     static let cellId = "ScoreTableCell"
 
-    /// Returns a label that displays the date the recorded scores
     var dateLabel: UILabel
-
-    /// Returns a label displaying the game results
     var informationLabel: UILabel
 
     // MARK: - Construction
@@ -47,12 +42,6 @@ class ScoreTableViewCell: UITableViewCell {
 
     // MARK: - Functions
 
-    /// Configures labels with the date and results of the user's games
-    ///
-    /// - Parameters:
-    ///     - date: Record date of user scores
-    ///     - score: Scores earned by the user per game
-    ///     - coins: Coins earned by the user per game
     func labelsConfigure(with value: (date: String, score: Int, coins: Int, hints: Int, level: String)) {
         dateLabel.text = value.date
         informationLabel.text = """
@@ -65,11 +54,7 @@ class ScoreTableViewCell: UITableViewCell {
 
     // MARK: - Private functions
 
-    /// Configuration of all view cell components
     private func configureViewComponents() {
-
-        // Configure cell style
-
         selectionStyle = .none
         contentView.backgroundColor = .systemGray4
         backgroundColor = UIColor(named: "LaunchBackgroundColor")
@@ -77,8 +62,6 @@ class ScoreTableViewCell: UITableViewCell {
         selectionStyle = .none
         accessoryType = .none
         editingAccessoryType = .none
-
-        // Create and configure text labels
 
         dateLabel.backgroundColor = contentView.backgroundColor
         dateLabel.numberOfLines = 1
@@ -96,13 +79,10 @@ class ScoreTableViewCell: UITableViewCell {
         informationLabel.textColor = UIColor(named: "helpTextColor")
         informationLabel.translatesAutoresizingMaskIntoConstraints = false
         informationLabel.setContentHuggingPriority(UILayoutPriority(249.0), for: .horizontal)
-        informationLabel.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 749.0),
-                                                                      for: .horizontal)
+        informationLabel.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 749.0), for: .horizontal)
 
         contentView.addSubview(dateLabel)
         contentView.addSubview(informationLabel)
-
-        // Create constraints
 
         NSLayoutConstraint.activate([
             dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
