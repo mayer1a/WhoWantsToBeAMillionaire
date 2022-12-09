@@ -24,9 +24,9 @@ final class SettingCareTaker {
     // MARK: - Constructions
 
     init() {
-        self.decoder = JSONDecoder()
-        self.encoder = JSONEncoder()
-        self.key = "settings.level"
+        decoder = JSONDecoder()
+        encoder = JSONEncoder()
+        key = "settings.level"
     }
 
     // MARK: - Functions

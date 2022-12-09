@@ -125,20 +125,20 @@ final class GameView: UIView {
     // MARK: - Constructions
 
     init() {
-        self.answerButtons = [UIButton]()
-        self.hintButtons = [UIButton]()
-        self.exitButton = UIButton()
-        self.helpButton = UIButton()
-        self.questionLabel = UILabel()
-        self.questionCounterLabel = UILabel()
-        self.percentsAnswersLabel = UILabel()
-        self.percentsLabelView = UIView()
-        self.answerTopStackView = UIStackView()
-        self.answerBottomStackView = UIStackView()
+        answerButtons = [UIButton]()
+        hintButtons = [UIButton]()
+        exitButton = UIButton()
+        helpButton = UIButton()
+        questionLabel = UILabel()
+        questionCounterLabel = UILabel()
+        percentsAnswersLabel = UILabel()
+        percentsLabelView = UIView()
+        answerTopStackView = UIStackView()
+        answerBottomStackView = UIStackView()
 
         super.init(frame: .zero)
 
-        self.configureViewComponents()
+        configureViewComponents()
     }
 
     required init?(coder: NSCoder) {
@@ -150,13 +150,13 @@ final class GameView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        guard self.answerButtons.first?.titleLabel?.text != " " else { return }
+        guard answerButtons.first?.titleLabel?.text != " " else { return }
 
-        self.percentsLabelView.layer.cornerRadius = self.percentsLabelView.frame.height / 2
-        self.percentsLabelView.layer.borderWidth = 1
-        self.percentsLabelView.layer.borderColor = UIColor(named: "hintLabelColor")?.cgColor
+        percentsLabelView.layer.cornerRadius = percentsLabelView.frame.height / 2
+        percentsLabelView.layer.borderWidth = 1
+        percentsLabelView.layer.borderColor = UIColor(named: "hintLabelColor")?.cgColor
 
-        self.updateAnswerButtons()
+        updateAnswerButtons()
     }
 
     // MARK: - Functions
@@ -167,7 +167,7 @@ final class GameView: UIView {
     ///     - questionNumber: Number of the current question
     ///     - totalQuestion: The number of all questions
     func questionCounterLabelConfigure(with value: (questionNumber: Int, totalQuestion: Int)) {
-        self.questionCounterLabel.text = "Вопрос \(value.questionNumber + 1) из \(value.totalQuestion)"
+        questionCounterLabel.text = "Вопрос \(value.questionNumber + 1) из \(value.totalQuestion)"
     }
 
     /// Configures the answer button by its index with an empty value
@@ -175,75 +175,75 @@ final class GameView: UIView {
     /// - Parameters:
     ///     - index: The number of the button to be reset
     func answerButtonCofigure(by index: Int) {
-        self.answerButtons[index].setTitle(" ", for: .normal)
+        answerButtons[index].setTitle(" ", for: .normal)
     }
 
     /// Configures the percents answers label
-    ///g
+    ///
     /// - Parameters:
     ///     - text: The text of the answers with percents
     func percentAnswerLabelCofigure(with text: String) {
-        self.percentsAnswersLabel.text = text
+        percentsAnswersLabel.text = text
     }
 
     // MARK: - Private functions
 
     /// Configuration of all view cell components
     private func configureViewComponents() {
-        self.backgroundColor = UIColor(named: "LaunchBackgroundColor")//.systemBackground
+        backgroundColor = UIColor(named: "LaunchBackgroundColor")//.systemBackground
 
         // Create three stack view from template
 
-        let hintButtonsStackView = self.horizontalStackViewTemplate
-        self.answerTopStackView = self.horizontalStackViewTemplate
-        self.answerBottomStackView = self.horizontalStackViewTemplate
+        let hintButtonsStackView = horizontalStackViewTemplate
+        answerTopStackView = horizontalStackViewTemplate
+        answerBottomStackView = horizontalStackViewTemplate
 
         // Configure exit and help buttons
 
-        self.exitButton = self.hintButtonTemplate
-        self.exitButton.setBackgroundImage(UIImage(named: "exit"), for: .normal)
-        self.exitButton.addTarget(self, action: #selector(self.exitButtonTapped), for: .touchUpInside)
+        exitButton = hintButtonTemplate
+        exitButton.setBackgroundImage(UIImage(named: "exit"), for: .normal)
+        exitButton.addTarget(self, action: #selector(exitButtonTapped), for: .touchUpInside)
 
-        self.helpButton = self.hintButtonTemplate
-        self.helpButton.setBackgroundImage(UIImage(named: "help"), for: .normal)
-        self.helpButton.addTarget(self, action: #selector(self.helpButtonTapped), for: .touchUpInside)
+        helpButton = hintButtonTemplate
+        helpButton.setBackgroundImage(UIImage(named: "help"), for: .normal)
+        helpButton.addTarget(self, action: #selector(helpButtonTapped), for: .touchUpInside)
 
         // Configure hint buttons and add to stack view
 
-        self.hintButtonsImageNames.enumerated().forEach { (index, buttonImage) in
-            let hintButton = self.hintButtonTemplate
+        hintButtonsImageNames.enumerated().forEach { (index, buttonImage) in
+            let hintButton = hintButtonTemplate
             hintButton.setBackgroundImage(UIImage(named: buttonImage), for: .normal)
             hintButton.tag = index
-            hintButton.addTarget(self, action: #selector(self.hintButtonsTapped), for: .touchUpInside)
+            hintButton.addTarget(self, action: #selector(hintButtonsTapped), for: .touchUpInside)
 
-            self.hintButtons.append(hintButton)
+            hintButtons.append(hintButton)
             hintButtonsStackView.addArrangedSubview(hintButton)
         }
 
         // Configure question label
 
-        self.questionLabel = self.labelTemplate
-        self.questionLabel.textColor = UIColor(named: "helpTextColor")
+        questionLabel = labelTemplate
+        questionLabel.textColor = UIColor(named: "helpTextColor")
 
         // Configure percent answer label and its view
 
-        self.percentsAnswersLabel = self.labelTemplate
-        self.percentsAnswersLabel.textColor = .label
-        self.percentsAnswersLabel.backgroundColor = UIColor(named: "hintLabelColor")
+        percentsAnswersLabel = labelTemplate
+        percentsAnswersLabel.textColor = .label
+        percentsAnswersLabel.backgroundColor = UIColor(named: "hintLabelColor")
 
-        self.percentsLabelView = UIView()
-        self.percentsLabelView.clipsToBounds = true
-        self.percentsLabelView.isHidden = true
-        self.percentsLabelView.backgroundColor = UIColor(named: "hintLabelColor")
-        self.percentsLabelView.translatesAutoresizingMaskIntoConstraints = false
-        self.percentsLabelView.addSubview(self.percentsAnswersLabel)
+        percentsLabelView = UIView()
+        percentsLabelView.clipsToBounds = true
+        percentsLabelView.isHidden = true
+        percentsLabelView.backgroundColor = UIColor(named: "hintLabelColor")
+        percentsLabelView.translatesAutoresizingMaskIntoConstraints = false
+        percentsLabelView.addSubview(percentsAnswersLabel)
 
         // Create answer buttons
 
         for step in 0..<4 {
-            let answerButton = self.answerButtonTemplate
+            let answerButton = answerButtonTemplate
             answerButton.setTitle(" ", for: .normal)
-            self.answerButtons.append(answerButton)
+            answerButtons.append(answerButton)
 
             if step < 2 {
                 answerTopStackView.addArrangedSubview(answerButton)
@@ -254,26 +254,26 @@ final class GameView: UIView {
 
         // Configure question counter label
 
-        self.questionCounterLabel.textAlignment = .center
-        self.questionCounterLabel.font = UIFont.systemFont(ofSize: 20.0, weight: .medium)
-        self.questionCounterLabel.backgroundColor = UIColor(named: "LaunchBackgroundColor")
-        self.questionCounterLabel.textColor = UIColor(named: "helpTextColor")
-        self.questionCounterLabel.translatesAutoresizingMaskIntoConstraints = false
+        questionCounterLabel.textAlignment = .center
+        questionCounterLabel.font = UIFont.systemFont(ofSize: 20.0, weight: .medium)
+        questionCounterLabel.backgroundColor = UIColor(named: "LaunchBackgroundColor")
+        questionCounterLabel.textColor = UIColor(named: "helpTextColor")
+        questionCounterLabel.translatesAutoresizingMaskIntoConstraints = false
 
         // Add subviews to game view
 
-        self.addSubview(self.exitButton)
-        self.addSubview(self.helpButton)
-        self.addSubview(hintButtonsStackView)
-        self.addSubview(self.questionLabel)
-        self.addSubview(answerTopStackView)
-        self.addSubview(answerBottomStackView)
-        self.addSubview(self.questionCounterLabel)
-        self.addSubview(self.percentsLabelView)
+        addSubview(exitButton)
+        addSubview(helpButton)
+        addSubview(hintButtonsStackView)
+        addSubview(questionLabel)
+        addSubview(answerTopStackView)
+        addSubview(answerBottomStackView)
+        addSubview(questionCounterLabel)
+        addSubview(percentsLabelView)
 
         // Create constraints
 
-        self.hintButtons.forEach { hintButton in
+        hintButtons.forEach { hintButton in
             hintButton.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
             hintButton.widthAnchor.constraint(equalToConstant: 50.0).isActive = true
         }
@@ -282,58 +282,58 @@ final class GameView: UIView {
 
             // Hint buttons stack view
 
-            hintButtonsStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-            hintButtonsStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            hintButtonsStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            hintButtonsStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
 
             // Help button
 
-            self.helpButton.heightAnchor.constraint(equalToConstant: 32.0),
-            self.helpButton.widthAnchor.constraint(equalToConstant: 32.0),
-            self.helpButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            self.helpButton.centerYAnchor.constraint(equalTo: hintButtonsStackView.centerYAnchor),
+            helpButton.heightAnchor.constraint(equalToConstant: 32.0),
+            helpButton.widthAnchor.constraint(equalToConstant: 32.0),
+            helpButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            helpButton.centerYAnchor.constraint(equalTo: hintButtonsStackView.centerYAnchor),
 
             // Exit button
 
-            self.exitButton.heightAnchor.constraint(equalToConstant: 32.0),
-            self.exitButton.widthAnchor.constraint(equalToConstant: 32.0),
-            self.exitButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            self.exitButton.centerYAnchor.constraint(equalTo: hintButtonsStackView.centerYAnchor),
+            exitButton.heightAnchor.constraint(equalToConstant: 32.0),
+            exitButton.widthAnchor.constraint(equalToConstant: 32.0),
+            exitButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            exitButton.centerYAnchor.constraint(equalTo: hintButtonsStackView.centerYAnchor),
 
             // Percent answer label
 
-            self.percentsAnswersLabel.leadingAnchor.constraint(equalTo: self.percentsLabelView.leadingAnchor,
+            percentsAnswersLabel.leadingAnchor.constraint(equalTo: percentsLabelView.leadingAnchor,
                                                                constant: 30),
-            self.percentsAnswersLabel.trailingAnchor.constraint(equalTo: self.percentsLabelView.trailingAnchor,
+            percentsAnswersLabel.trailingAnchor.constraint(equalTo: percentsLabelView.trailingAnchor,
                                                                 constant: -30),
-            self.percentsAnswersLabel.topAnchor.constraint(equalTo: self.percentsLabelView.topAnchor, constant: 10),
-            self.percentsAnswersLabel.bottomAnchor.constraint(equalTo: self.percentsLabelView.bottomAnchor,
+            percentsAnswersLabel.topAnchor.constraint(equalTo: percentsLabelView.topAnchor, constant: 10),
+            percentsAnswersLabel.bottomAnchor.constraint(equalTo: percentsLabelView.bottomAnchor,
                                                               constant: -10),
 
-            self.percentsLabelView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            self.percentsLabelView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
-            self.percentsLabelView.topAnchor.constraint(equalTo: hintButtonsStackView.bottomAnchor, constant: 20),
+            percentsLabelView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            percentsLabelView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            percentsLabelView.topAnchor.constraint(equalTo: hintButtonsStackView.bottomAnchor, constant: 20),
 
             // Question label
 
-            self.questionLabel.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            self.questionLabel.topAnchor.constraint(greaterThanOrEqualTo: hintButtonsStackView.bottomAnchor,
+            questionLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            questionLabel.topAnchor.constraint(greaterThanOrEqualTo: hintButtonsStackView.bottomAnchor,
                                                constant: 50),
-            self.questionLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            self.questionLabel.bottomAnchor.constraint(equalTo: self.centerYAnchor, constant: -25),
+            questionLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            questionLabel.bottomAnchor.constraint(equalTo: centerYAnchor, constant: -25),
 
             // Answer buttons top stack view
 
-            answerTopStackView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor,
+            answerTopStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor,
                                                          constant: -10),
-            answerTopStackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            answerTopStackView.topAnchor.constraint(equalTo: self.centerYAnchor, constant: 25),
+            answerTopStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            answerTopStackView.topAnchor.constraint(equalTo: centerYAnchor, constant: 25),
 
             // Answer buttons bottom stack view
 
-            answerBottomStackView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor,
+            answerBottomStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor,
                                                             constant: -10),
             answerBottomStackView.topAnchor.constraint(equalTo: answerTopStackView.bottomAnchor, constant: 10),
-            answerBottomStackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor,
+            answerBottomStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor,
                                                            constant: 10),
 
             // Answer buttons
@@ -343,14 +343,14 @@ final class GameView: UIView {
 
             // Question counter label
 
-            self.questionCounterLabel.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
-            self.questionCounterLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+            questionCounterLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            questionCounterLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }
 
     /// Update size of answer buttons
     private func updateAnswerButtons() {
-        let maxHeightButton = self.answerButtons.max {
+        let maxHeightButton = answerButtons.max {
             $0.titleLabel?.frame.height ?? 0 < $1.titleLabel?.frame.height ?? 0
         }
 
@@ -358,7 +358,7 @@ final class GameView: UIView {
 
         if maxHeight >= maxHeightButton?.frame.height ?? 0 {
 
-            self.answerButtons.forEach { button in
+            answerButtons.forEach { button in
                 let newSize = CGSize(width: button.layer.frame.width, height: maxHeight)
 
                 button.layer.frame = CGRect(origin: button.layer.frame.origin, size: newSize)
@@ -367,18 +367,18 @@ final class GameView: UIView {
                 button.layer.borderColor = UIColor.systemBlue.cgColor
             }
 
-            let topSize = CGSize(width: self.answerTopStackView.layer.frame.width, height: maxHeight)
-            let topOrigin = self.answerTopStackView.layer.frame.origin
-            self.answerTopStackView.layer.frame = CGRect(origin: topOrigin, size: topSize)
+            let topSize = CGSize(width: answerTopStackView.layer.frame.width, height: maxHeight)
+            let topOrigin = answerTopStackView.layer.frame.origin
+            answerTopStackView.layer.frame = CGRect(origin: topOrigin, size: topSize)
 
-            let topFrame = self.answerTopStackView.layer.frame
+            let topFrame = answerTopStackView.layer.frame
             let newBottomYPoint = topFrame.origin.y + topFrame.height + 10
-            let bottomSize = CGSize(width: self.answerBottomStackView.layer.frame.width, height: maxHeight)
-            let bottomOrigin = CGPoint(x: self.answerBottomStackView.layer.frame.origin.x, y: newBottomYPoint)
-            self.answerBottomStackView.layer.frame = CGRect(origin: bottomOrigin, size: bottomSize)
+            let bottomSize = CGSize(width: answerBottomStackView.layer.frame.width, height: maxHeight)
+            let bottomOrigin = CGPoint(x: answerBottomStackView.layer.frame.origin.x, y: newBottomYPoint)
+            answerBottomStackView.layer.frame = CGRect(origin: bottomOrigin, size: bottomSize)
 
         } else {
-            self.answerButtons.forEach { button in
+            answerButtons.forEach { button in
                 button.layer.cornerRadius = button.layer.frame.height / 2
             }
         }
@@ -387,17 +387,17 @@ final class GameView: UIView {
 
     /// The action that occurs when you tap on one of the answer buttons
     @objc private func answerButtonTapped(_ sender: UIButton) {
-        self.delegate?.answerButtonTapped(with: sender.titleLabel?.text ?? "")
+        delegate?.answerButtonTapped(with: sender.titleLabel?.text ?? "")
     }
 
     /// The action that occurs when you tap on the exit button
     @objc private func exitButtonTapped() {
-        self.delegate?.gameExit()
+        delegate?.gameExit()
     }
 
     /// The action that occurs when you tap on the help button
     @objc private func helpButtonTapped() {
-        self.delegate?.helpButtonTapped()
+        delegate?.helpButtonTapped()
     }
 
     /// The action that occurs when you tap on the hint buttons
@@ -405,6 +405,6 @@ final class GameView: UIView {
         sender.isEnabled = false
         sender.setBackgroundImage(UIImage(named: hintButtonsGrayImageNames[sender.tag]), for: .normal)
 
-        self.delegate?.hintButtonsTapped(with: sender.tag)
+        delegate?.hintButtonsTapped(with: sender.tag)
     }
 }

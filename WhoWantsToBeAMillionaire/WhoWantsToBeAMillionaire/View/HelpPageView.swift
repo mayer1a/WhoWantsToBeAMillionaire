@@ -18,11 +18,11 @@ final class HelpPageView: UIView {
     // MARK: - Constructions
 
     init() {
-        self.rulesLabel = UILabel()
+        rulesLabel = UILabel()
 
         super.init(frame: .zero)
 
-        self.configureViewComponents()
+        configureViewComponents()
     }
 
     required init?(coder: NSCoder) {
@@ -55,53 +55,53 @@ final class HelpPageView: UIView {
             }
         }
 
-        self.rulesLabel.text = "\(text)\n\nОБЩИЕ ПРАВИЛА\n\n\(self.commonRules)\(hintsText)"
-        self.rulesLabel.sizeToFit()
+        rulesLabel.text = "\(text)\n\nОБЩИЕ ПРАВИЛА\n\n\(commonRules)\(hintsText)"
+        rulesLabel.sizeToFit()
     }
 
     // MARK: - Private functions
 
     /// Configuration of all view cell components
     private func configureViewComponents() {
-        self.backgroundColor = UIColor(named: "LaunchBackgroundColor")
+        backgroundColor = UIColor(named: "LaunchBackgroundColor")
 
         // Configures common rules label
 
-        self.rulesLabel.textColor = UIColor(named: "helpTextColor")
-        self.rulesLabel.textAlignment = .natural
-        self.rulesLabel.numberOfLines = 0
-        self.rulesLabel.lineBreakMode = .byWordWrapping
-        self.rulesLabel.font = UIFont.systemFont(ofSize: 20.0, weight: .medium)
-        self.rulesLabel.contentMode = .left
-        self.rulesLabel.backgroundColor = UIColor(named: "LaunchBackgroundColor")
-        self.rulesLabel.translatesAutoresizingMaskIntoConstraints = false
+        rulesLabel.textColor = UIColor(named: "helpTextColor")
+        rulesLabel.textAlignment = .natural
+        rulesLabel.numberOfLines = 0
+        rulesLabel.lineBreakMode = .byWordWrapping
+        rulesLabel.font = UIFont.systemFont(ofSize: 20.0, weight: .medium)
+        rulesLabel.contentMode = .left
+        rulesLabel.backgroundColor = UIColor(named: "LaunchBackgroundColor")
+        rulesLabel.translatesAutoresizingMaskIntoConstraints = false
 
         // Configures the scroll view to correctly display a large amount of text
 
         let contentView = UIView()
-        contentView.backgroundColor = self.backgroundColor
+        contentView.backgroundColor = backgroundColor
         contentView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(self.rulesLabel)
+        contentView.addSubview(rulesLabel)
 
         let scrollView = UIScrollView()
-        scrollView.backgroundColor = self.backgroundColor
+        scrollView.backgroundColor = backgroundColor
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.addSubview(contentView)
 
-        self.addSubview(scrollView)
+        addSubview(scrollView)
 
         // Configures constraints
 
         NSLayoutConstraint.activate([
-            self.rulesLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            self.rulesLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -20),
-            self.rulesLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-            self.rulesLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            rulesLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            rulesLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -20),
+            rulesLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+            rulesLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
-            scrollView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            scrollView.widthAnchor.constraint(equalTo: self.widthAnchor),
-            scrollView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
+            scrollView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            scrollView.widthAnchor.constraint(equalTo: widthAnchor),
+            scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
 
             contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),

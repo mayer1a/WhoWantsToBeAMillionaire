@@ -44,11 +44,11 @@ final class GameSession {
     // MARK: - Constructions
 
     init() {
-        self.correctAnswerCount = Int()
-        self.questionsCount = Int()
-        self.playerEarnedCoins = Int()
-        self.scoresEarned = Int()
-        self.hints = [.fiftyFifty, .callFriend, .auditoryHelp]
+        correctAnswerCount = Int()
+        questionsCount = Int()
+        playerEarnedCoins = Int()
+        scoresEarned = Int()
+        hints = [.fiftyFifty, .callFriend, .auditoryHelp]
     }
 }
 
@@ -57,30 +57,30 @@ final class GameSession {
 extension GameSession: GameSessionDelegate {
 
     var totalQuestionsNumber: Int {
-        get { return self.questionsCount }
-        set { self.questionsCount = newValue }
+        get { return questionsCount }
+        set { questionsCount = newValue }
     }
 
     var correctAnswers: Int {
-        get { return self.correctAnswerCount }
+        get { return correctAnswerCount }
     }
 
     var hintsAvailable: [Hint] {
-        get { return self.hints }
+        get { return hints }
     }
 
     var coinsEarned: Int {
-        get { return self.playerEarnedCoins }
+        get { return playerEarnedCoins }
     }
 
     var scores: Int {
-        get { return self.scoresEarned }
+        get { return scoresEarned }
     }
 
     func increaseCorrectAnswersNumber() {
-        self.correctAnswerCount += 1
-        self.playerEarnedCoins = coinsRange[self.correctAnswerCount - 1]
-        self.scoresEarned = 100 / self.totalQuestionsNumber * self.correctAnswerCount
+        correctAnswerCount += 1
+        playerEarnedCoins = coinsRange[correctAnswerCount - 1]
+        scoresEarned = 100 / totalQuestionsNumber * correctAnswerCount
     }
 
     func removeUsedHint(of usedHint: Hint) {

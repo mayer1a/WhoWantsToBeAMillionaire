@@ -24,12 +24,12 @@ class ScoreTableViewCell: UITableViewCell {
     // MARK: - Construction
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        self.dateLabel = UILabel()
-        self.informationLabel = UILabel()
+        dateLabel = UILabel()
+        informationLabel = UILabel()
 
         super.init(style: .value1, reuseIdentifier: reuseIdentifier)
 
-        self.configureViewComponents()
+        configureViewComponents()
     }
 
     required init?(coder: NSCoder) {
@@ -41,8 +41,8 @@ class ScoreTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
 
-        self.dateLabel.text = String()
-        self.informationLabel.text = String()
+        dateLabel.text = String()
+        informationLabel.text = String()
     }
 
     // MARK: - Functions
@@ -54,8 +54,8 @@ class ScoreTableViewCell: UITableViewCell {
     ///     - score: Scores earned by the user per game
     ///     - coins: Coins earned by the user per game
     func labelsConfigure(with value: (date: String, score: Int, coins: Int, hints: Int, level: String)) {
-        self.dateLabel.text = value.date
-        self.informationLabel.text = """
+        dateLabel.text = value.date
+        informationLabel.text = """
             Верно отвечено на \(value.score)% вопросов
             Получено \(value.coins) монет
             Подсказок использовано \(value.hints) из 3
@@ -70,47 +70,47 @@ class ScoreTableViewCell: UITableViewCell {
 
         // Configure cell style
 
-        self.selectionStyle = .none
-        self.contentView.backgroundColor = .systemGray4
-        self.backgroundColor = UIColor(named: "LaunchBackgroundColor")
-        self.contentMode = .center
-        self.selectionStyle = .none
-        self.accessoryType = .none
-        self.editingAccessoryType = .none
+        selectionStyle = .none
+        contentView.backgroundColor = .systemGray4
+        backgroundColor = UIColor(named: "LaunchBackgroundColor")
+        contentMode = .center
+        selectionStyle = .none
+        accessoryType = .none
+        editingAccessoryType = .none
 
         // Create and configure text labels
 
-        self.dateLabel.backgroundColor = self.contentView.backgroundColor
-        self.dateLabel.numberOfLines = 1
-        self.dateLabel.textAlignment = .left
-        self.dateLabel.lineBreakMode = .byTruncatingTail
-        self.dateLabel.font = UIFont.systemFont(ofSize: 13.0, weight: .medium)
-        self.dateLabel.textColor = UIColor(named: "helpTextColor")
-        self.dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        dateLabel.backgroundColor = contentView.backgroundColor
+        dateLabel.numberOfLines = 1
+        dateLabel.textAlignment = .left
+        dateLabel.lineBreakMode = .byTruncatingTail
+        dateLabel.font = UIFont.systemFont(ofSize: 13.0, weight: .medium)
+        dateLabel.textColor = UIColor(named: "helpTextColor")
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
 
-        self.informationLabel.backgroundColor = self.contentView.backgroundColor
-        self.informationLabel.numberOfLines = 0
-        self.informationLabel.textAlignment = .right
-        self.informationLabel.lineBreakMode = .byWordWrapping
-        self.informationLabel.font = UIFont.systemFont(ofSize: 13.0, weight: .medium)
-        self.informationLabel.textColor = UIColor(named: "helpTextColor")
-        self.informationLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.informationLabel.setContentHuggingPriority(UILayoutPriority(249.0), for: .horizontal)
-        self.informationLabel.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 749.0),
+        informationLabel.backgroundColor = contentView.backgroundColor
+        informationLabel.numberOfLines = 0
+        informationLabel.textAlignment = .right
+        informationLabel.lineBreakMode = .byWordWrapping
+        informationLabel.font = UIFont.systemFont(ofSize: 13.0, weight: .medium)
+        informationLabel.textColor = UIColor(named: "helpTextColor")
+        informationLabel.translatesAutoresizingMaskIntoConstraints = false
+        informationLabel.setContentHuggingPriority(UILayoutPriority(249.0), for: .horizontal)
+        informationLabel.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 749.0),
                                                                       for: .horizontal)
 
-        self.contentView.addSubview(self.dateLabel)
-        self.contentView.addSubview(self.informationLabel)
+        contentView.addSubview(dateLabel)
+        contentView.addSubview(informationLabel)
 
         // Create constraints
 
         NSLayoutConstraint.activate([
-            self.dateLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10),
-            self.dateLabel.trailingAnchor.constraint(equalTo: self.informationLabel.leadingAnchor, constant: -10),
-            self.informationLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 10),
-            self.informationLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -10),
-            self.informationLabel.centerYAnchor.constraint(equalTo: self.dateLabel.centerYAnchor),
-            self.informationLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -10)
+            dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            dateLabel.trailingAnchor.constraint(equalTo: informationLabel.leadingAnchor, constant: -10),
+            informationLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            informationLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+            informationLabel.centerYAnchor.constraint(equalTo: dateLabel.centerYAnchor),
+            informationLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10)
         ])
     }
 }

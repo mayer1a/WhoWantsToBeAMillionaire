@@ -20,7 +20,7 @@ final class ReusableHeaderFooterView: UITableViewHeaderFooterView {
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
 
-        self.contentView.addSubview(UIView())
+        contentView.addSubview(UIView())
     }
 
     required init?(coder: NSCoder) {

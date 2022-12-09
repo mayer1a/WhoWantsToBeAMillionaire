@@ -28,11 +28,11 @@ class ScoreTableView: UITableView {
     // MARK: - Constructions
 
     init() {
-        self.clearScoreTableButton = UIBarButtonItem()
+        clearScoreTableButton = UIBarButtonItem()
 
         super.init(frame: .zero, style: .insetGrouped)
 
-        self.configureViewComponents()
+        configureViewComponents()
     }
 
     required init?(coder: NSCoder) {
@@ -46,12 +46,12 @@ class ScoreTableView: UITableView {
 
         // Configure table view
 
-        self.separatorStyle = .none
-        self.backgroundColor = UIColor(named: "LaunchBackgroundColor")
-        self.sectionIndexBackgroundColor = UIColor(named: "LaunchBackgroundColor")
-        self.allowsSelection = false
-        self.showsHorizontalScrollIndicator = false
-        self.showsVerticalScrollIndicator = false
+        separatorStyle = .none
+        backgroundColor = UIColor(named: "LaunchBackgroundColor")
+        sectionIndexBackgroundColor = UIColor(named: "LaunchBackgroundColor")
+        allowsSelection = false
+        showsHorizontalScrollIndicator = false
+        showsVerticalScrollIndicator = false
 
         // Configure table header view
 
@@ -64,14 +64,14 @@ class ScoreTableView: UITableView {
         tableImageHeaderView.backgroundColor = UIColor(red: 0.0156863, green: 0.0156863, blue: 0.266667, alpha: 1)
         tableImageHeaderView.addSubview(coverImageView)
 
-        self.tableHeaderView = tableImageHeaderView
+        tableHeaderView = tableImageHeaderView
         
         // Configure clear scoretable bar button
 
-        self.clearScoreTableButton.title = "Очистить таблицу"
-        self.clearScoreTableButton.style = .plain
-        self.clearScoreTableButton.target = self
-        self.clearScoreTableButton.action = #selector(self.clearScoreButtonTapped)
+        clearScoreTableButton.title = "Очистить таблицу"
+        clearScoreTableButton.style = .plain
+        clearScoreTableButton.target = self
+        clearScoreTableButton.action = #selector(clearScoreButtonTapped)
 
         // Create constraints
         
@@ -87,6 +87,6 @@ class ScoreTableView: UITableView {
 
     /// The action that occurs when you click on the button to clear the table from score records
     @objc private func clearScoreButtonTapped() {
-        self.scoreTableButtonDelegate?.clearScoreTableButtonTapped()
+        scoreTableButtonDelegate?.clearScoreTableButtonTapped()
     }
 }

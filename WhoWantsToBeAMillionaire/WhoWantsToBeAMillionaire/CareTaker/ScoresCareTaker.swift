@@ -24,9 +24,9 @@ final class ScoresCareTaker {
     // MARK: - Constructions
 
     init() {
-        self.decoder = JSONDecoder()
-        self.encoder = JSONEncoder()
-        self.key = "scores"
+        decoder = JSONDecoder()
+        encoder = JSONEncoder()
+        key = "scores"
     }
 
     // MARK: - Functions

@@ -14,7 +14,7 @@ final class ScoreTableViewController: UIViewController {
 
     /// Returns cast view to **ScoreTableView** type
     private var scoreTableView: ScoreTableView? {
-        return isViewLoaded ? self.view as? ScoreTableView : nil
+        return isViewLoaded ? view as? ScoreTableView : nil
     }
 
     /// Returns date formatter for date readability
@@ -28,25 +28,25 @@ final class ScoreTableViewController: UIViewController {
     // MARK: - Lifecycle
 
     override func loadView() {
-        self.view = ScoreTableView()
+        view = ScoreTableView()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.scoreTableView?.delegate = self
-        self.scoreTableView?.scoreTableButtonDelegate = self
-        self.scoreTableView?.dataSource = self
-        self.scoreTableView?.register(ScoreTableViewCell.self, forCellReuseIdentifier: ScoreTableViewCell.cellId)
-        self.scoreTableView?.register(ReusableHeaderFooterView.self,
+        scoreTableView?.delegate = self
+        scoreTableView?.scoreTableButtonDelegate = self
+        scoreTableView?.dataSource = self
+        scoreTableView?.register(ScoreTableViewCell.self, forCellReuseIdentifier: ScoreTableViewCell.cellId)
+        scoreTableView?.register(ReusableHeaderFooterView.self,
                                       forHeaderFooterViewReuseIdentifier: ReusableHeaderFooterView.headerFooterId)
 
 
-        self.navigationController?.navigationBar.topItem?.backButtonTitle = "Назад"
+        navigationController?.navigationBar.topItem?.backButtonTitle = "Назад"
 
-        guard let rightBarButton = self.scoreTableView?.clearScoreTableButton else { return }
+        guard let rightBarButton = scoreTableView?.clearScoreTableButton else { return }
         
-        self.navigationItem.rightBarButtonItem = rightBarButton
+        navigationItem.rightBarButtonItem = rightBarButton
     }
 }
 
@@ -104,6 +104,6 @@ extension ScoreTableViewController: ScoreTableViewDelegate {
 
     func clearScoreTableButtonTapped() {
         Game.shared.clearScoresTable()
-        self.scoreTableView?.reloadData()
+        scoreTableView?.reloadData()
     }
 }

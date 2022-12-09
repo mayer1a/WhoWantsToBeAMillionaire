@@ -38,7 +38,7 @@ final class MainMenuView: UIView {
         let button = UIButton(type: .system)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20.0, weight: .medium)
         button.backgroundColor = UIColor(named: "LaunchBackgroundColor")
-        button.addTarget(self, action: #selector(self.buttonDidTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(buttonDidTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
 
         return button
@@ -72,14 +72,14 @@ final class MainMenuView: UIView {
     // MARK: - Constructions
 
     required init() {
-        self.scoreLabel = UILabel()
-        self.playButton = UIButton()
-        self.scoreButton = UIButton()
-        self.levelSwitch = UISwitch()
+        scoreLabel = UILabel()
+        playButton = UIButton()
+        scoreButton = UIButton()
+        levelSwitch = UISwitch()
 
         super.init(frame: .zero)
 
-        self.configureViewComponents()
+        configureViewComponents()
     }
 
     required init?(coder: NSCoder) {
@@ -89,10 +89,10 @@ final class MainMenuView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        self.levelSwitch.layer.borderColor = UIColor(named: "SwitchBorderColor")?.cgColor
-        self.levelSwitch.layer.cornerRadius = self.levelSwitch.frame.height / 2
-        self.levelSwitch.layer.masksToBounds = true
-        self.levelSwitch.layer.borderWidth = 1
+        levelSwitch.layer.borderColor = UIColor(named: "SwitchBorderColor")?.cgColor
+        levelSwitch.layer.cornerRadius = levelSwitch.frame.height / 2
+        levelSwitch.layer.masksToBounds = true
+        levelSwitch.layer.borderWidth = 1
     }
 
     // MARK: - Functions
@@ -103,7 +103,7 @@ final class MainMenuView: UIView {
     ///     - score: The number of scores earned by the user
     ///     - coins: The number of coins earned by the user
     func scoreLabelConfigurate(with value: (score: Int, coins: Int)) {
-        self.scoreLabel.text = "Последний результат: \(value.score)% | \(value.coins) монет"
+        scoreLabel.text = "Последний результат: \(value.score)% | \(value.coins) монет"
     }
 
     /// Configures a label with empty string
@@ -111,7 +111,7 @@ final class MainMenuView: UIView {
     /// - Parameters:
     ///     - text: String to set to score label, **default is empty**
     func scoreLabelConfigurate(with text: String = "") {
-        self.scoreLabel.text = text
+        scoreLabel.text = text
     }
 
     /// Configures the game level switch based on restored data
@@ -119,92 +119,82 @@ final class MainMenuView: UIView {
     /// - Parameters:
     ///     - state: Restored switch level state
     func levelSwitchConfigurate(with state: Bool) {
-        self.levelSwitch.setOn(state, animated: false)
+        levelSwitch.setOn(state, animated: false)
     }
 
     // MARK: - Private functions
 
     /// Configuration of all view cell components
     private func configureViewComponents() {
-        self.backgroundColor = UIColor(named: "LaunchBackgroundColor")
+        backgroundColor = UIColor(named: "LaunchBackgroundColor")
 
-        // Configure play and scoreboard buttons
+        playButton = buttonTemplate
+        playButton.setTitle("Играть", for: .normal)
+        playButton.setTitleColor(.black, for: .normal)
+        playButton.setBackgroundImage(UIImage(named: "play"), for: .normal)
+        playButton.tag = 0
 
-        self.playButton = self.buttonTemplate
-        self.playButton.setTitle("Играть", for: .normal)
-        self.playButton.setTitleColor(.black, for: .normal)
-        self.playButton.setBackgroundImage(UIImage(named: "play"), for: .normal)
-        self.playButton.tag = 0
-
-        self.scoreButton = self.buttonTemplate
-        self.scoreButton.setTitle("Результаты", for: .normal)
-        self.scoreButton.setTitleColor(UIColor(named: "helpTextColor"), for: .normal)
-        self.scoreButton.tag = 1
+        scoreButton = buttonTemplate
+        scoreButton.setTitle("Результаты", for: .normal)
+        scoreButton.setTitleColor(UIColor(named: "helpTextColor"), for: .normal)
+        scoreButton.tag = 1
 
         if #available(iOS 15.0, *) {
-            self.scoreButton.configuration = UIButton.Configuration.plain()
-            self.scoreButton.setImage(UIImage(named: "scoreTable"), for: .normal)
-            self.scoreButton.configuration?.imagePlacement = .top
+            scoreButton.configuration = UIButton.Configuration.plain()
+            scoreButton.setImage(UIImage(named: "scoreTable"), for: .normal)
+            scoreButton.configuration?.imagePlacement = .top
         }
 
-        // Configures score label
+        scoreLabel = labelTemplate
+        scoreLabel.textAlignment = .center
 
-        self.scoreLabel = self.labelTemplate
-        self.scoreLabel.textAlignment = .center
-
-        // Configures game difficult level switch and labels
-
-        self.levelSwitch.setOn(false, animated: false)
-        self.levelSwitch.onTintColor = UIColor(named: "SwitchTintColor")
-        self.levelSwitch.clipsToBounds = true
-        self.levelSwitch.translatesAutoresizingMaskIntoConstraints = false
-        self.levelSwitch.addTarget(self, action: #selector(self.gameLevelChanged(_:)), for: .valueChanged)
+        levelSwitch.setOn(false, animated: false)
+        levelSwitch.onTintColor = UIColor(named: "SwitchTintColor")
+        levelSwitch.clipsToBounds = true
+        levelSwitch.translatesAutoresizingMaskIntoConstraints = false
+        levelSwitch.addTarget(self, action: #selector(gameLevelChanged(_:)), for: .valueChanged)
         
-        let easyLabel = self.labelTemplate
+        let easyLabel = labelTemplate
         easyLabel.text = "Хардкорный режим:"
 
-        // Add subviews
-
-        self.addSubview(self.playButton)
-        self.addSubview(self.scoreButton)
-        self.addSubview(self.scoreLabel)
-        self.addSubview(self.levelSwitch)
-        self.addSubview(easyLabel)
-
-        // Configures constraints
+        addSubview(playButton)
+        addSubview(scoreButton)
+        addSubview(scoreLabel)
+        addSubview(levelSwitch)
+        addSubview(easyLabel)
 
         NSLayoutConstraint.activate([
-            self.playButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 128.0),
-            self.playButton.widthAnchor.constraint(equalTo: self.playButton.heightAnchor),
-            self.playButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            self.playButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -87),
-            self.playButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 87),
+            playButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 128.0),
+            playButton.widthAnchor.constraint(equalTo: playButton.heightAnchor),
+            playButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+            playButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -87),
+            playButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 87),
 
-            self.scoreButton.centerXAnchor.constraint(equalTo: self.playButton.centerXAnchor),
-            self.scoreButton.topAnchor.constraint(equalTo: self.playButton.bottomAnchor, constant: 40.0),
-            self.scoreButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 121.0),
-            self.scoreButton.widthAnchor.constraint(equalTo: self.scoreButton.heightAnchor),
+            scoreButton.centerXAnchor.constraint(equalTo: playButton.centerXAnchor),
+            scoreButton.topAnchor.constraint(equalTo: playButton.bottomAnchor, constant: 40.0),
+            scoreButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 121.0),
+            scoreButton.widthAnchor.constraint(equalTo: scoreButton.heightAnchor),
 
-            self.scoreLabel.topAnchor.constraint(greaterThanOrEqualTo: self.scoreButton.bottomAnchor, constant: 10),
-            self.scoreLabel.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            self.scoreLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            self.scoreLabel.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
+            scoreLabel.topAnchor.constraint(greaterThanOrEqualTo: scoreButton.bottomAnchor, constant: 10),
+            scoreLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            scoreLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            scoreLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
 
-            self.levelSwitch.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 10),
-            self.levelSwitch.leadingAnchor.constraint(equalTo: easyLabel.trailingAnchor, constant: 50),
+            levelSwitch.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
+            levelSwitch.leadingAnchor.constraint(equalTo: easyLabel.trailingAnchor, constant: 50),
 
-            easyLabel.centerYAnchor.constraint(equalTo: self.levelSwitch.centerYAnchor),
-            easyLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10)
+            easyLabel.centerYAnchor.constraint(equalTo: levelSwitch.centerYAnchor),
+            easyLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10)
         ])
     }
 
     /// The action that occurs when you tap on the play or scoreboard buttons
     @objc private func buttonDidTapped(_ sender: UIButton) {
-        self.delegate?.buttonDidTapped(with: sender.tag)
+        delegate?.buttonDidTapped(with: sender.tag)
     }
 
     /// The action that occurs when you change switch state and change game difficult level
     @objc private func gameLevelChanged(_ sender: UISwitch) {
-        self.delegate?.gameLevelChanged()
+        delegate?.gameLevelChanged()
     }
 }

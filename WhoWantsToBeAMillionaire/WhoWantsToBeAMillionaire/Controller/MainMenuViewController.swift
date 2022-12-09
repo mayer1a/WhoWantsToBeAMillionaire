@@ -14,13 +14,13 @@ final class MainMenuViewController: UIViewController {
 
     /// Returns cast view to **MainMenuView** type
     private var menuView: MainMenuView? {
-        return isViewLoaded ? self.view as? MainMenuView : nil
+        return isViewLoaded ? view as? MainMenuView : nil
     }
 
     // MARK: - Lifecycle
 
     override func loadView() {
-        self.view = MainMenuView()
+        view = MainMenuView()
     }
 
     override func viewDidLoad() {
@@ -30,15 +30,15 @@ final class MainMenuViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = false
+        navigationController?.isNavigationBarHidden = false
         
         guard let lastScoreResult = Game.shared.scores.first else {
-            self.menuView?.scoreLabelConfigurate()
+            menuView?.scoreLabelConfigurate()
             return
         }
 
-        self.menuView?.levelSwitchConfigurate(with: Game.shared.isHardcoreLevel)
-        self.menuView?.scoreLabelConfigurate(with: (lastScoreResult.score, lastScoreResult.coins))
+        menuView?.levelSwitchConfigurate(with: Game.shared.isHardcoreLevel)
+        menuView?.scoreLabelConfigurate(with: (lastScoreResult.score, lastScoreResult.coins))
     }
 }
 

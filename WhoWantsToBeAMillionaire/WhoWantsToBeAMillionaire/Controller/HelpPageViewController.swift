@@ -26,13 +26,13 @@ final class HelpPageViewController: UIViewController {
 
     /// Returns cast view to **HelpPageView** type
     private var helpPageView: HelpPageView? {
-        return isViewLoaded ? self.view as? HelpPageView : nil
+        return isViewLoaded ? view as? HelpPageView : nil
     }
 
     // MARK: - Lifecycle
 
     override func loadView() {
-        self.view = HelpPageView()
+        view = HelpPageView()
     }
 
     override func viewDidLoad() {
@@ -40,12 +40,12 @@ final class HelpPageViewController: UIViewController {
 
         guard let gameInfo = Game.shared.gameSession else { return }
 
-        self.navigationController?.navigationBar.topItem?.backButtonTitle = "Назад"
-        self.helpPageView?.rulesLabelConfugure(with: gameInfo, delegate?.hints)
+        navigationController?.navigationBar.topItem?.backButtonTitle = "Назад"
+        helpPageView?.rulesLabelConfugure(with: gameInfo, delegate?.hints)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = false
+        navigationController?.isNavigationBarHidden = false
     }
 }

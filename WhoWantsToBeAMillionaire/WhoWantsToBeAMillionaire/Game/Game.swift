@@ -32,14 +32,14 @@ final class Game {
     /// User earned points storage
     private(set) var scores: [Score] {
         didSet {
-            self.scoresCareTaker.saveScores(scores: scores)
+            scoresCareTaker.saveScores(scores: scores)
         }
     }
 
     /// User game level settings storage
     private(set) var isHardcoreLevel: Bool {
         didSet {
-            self.settingCareTaker.saveSettings(isHardcoreLevel: isHardcoreLevel)
+            settingCareTaker.saveSettings(isHardcoreLevel: isHardcoreLevel)
         }
     }
 
@@ -51,8 +51,8 @@ final class Game {
     // MARK: - Private constructions
 
     private init() {
-        self.scores = self.scoresCareTaker.restoreScores()
-        self.isHardcoreLevel = self.settingCareTaker.restoreSettings()
+        scores = scoresCareTaker.restoreScores()
+        isHardcoreLevel = settingCareTaker.restoreSettings()
     }
 
     // MARK: - Functions
@@ -62,17 +62,17 @@ final class Game {
     /// - Parameters:
     ///     - score: User scores of **Score** type to be added to the scoretable
     func addScoreEntry(_ score: Score) {
-        self.scores.insert(score, at: 0)
+        scores.insert(score, at: 0)
     }
 
     /// Clear scoreboard
     func clearScoresTable() {
-        self.scores = []
+        scores = []
     }
 
     /// Toggle game difficult level
     func toggleGameLevel() {
-        self.isHardcoreLevel.toggle()
+        isHardcoreLevel.toggle()
     }
 
     /// Finish the game with the result - win or lose.
@@ -80,7 +80,7 @@ final class Game {
     /// Calculates the earned points and coins of the user depending on the outcome of the game.
     /// Writes the result to the scoreboard and resets the game session
     func didEndGame(with loss: Bool) {
-        guard let gameSession = self.gameSession else { return }
+        guard let gameSession = gameSession else { return }
 
         var coins = Int()
 
@@ -100,9 +100,9 @@ final class Game {
                           score: gameSession.scores,
                           coins: coins,
                           usedHintsNumber: usedHintsNumber,
-                          isHardcoreLevel: self.isHardcoreLevel)
+                          isHardcoreLevel: isHardcoreLevel)
 
-        self.addScoreEntry(score)
+        addScoreEntry(score)
 
         self.gameSession = nil
     }

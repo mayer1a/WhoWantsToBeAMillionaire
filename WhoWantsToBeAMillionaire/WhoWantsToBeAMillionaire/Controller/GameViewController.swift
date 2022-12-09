@@ -46,7 +46,7 @@ final class GameViewController: UIViewController {
 
     /// Returns cast view to **GameView** type
     private var gameView: GameView? {
-        return isViewLoaded ? self.view as? GameView : nil
+        return isViewLoaded ? view as? GameView : nil
     }
 
     /// Returns an array of questions for the game session
@@ -71,7 +71,7 @@ final class GameViewController: UIViewController {
     // MARK: - Lifecycle
 
     override func loadView() {
-        self.view = GameView()
+        view = GameView()
     }
 
     override func viewDidLoad() {
@@ -79,16 +79,16 @@ final class GameViewController: UIViewController {
 
         Game.shared.gameSession = GameSession()
 
-        self.gameSessionDelegate = Game.shared.gameSession.self
-        self.gameView?.delegate = self
-        self.gameSessionDelegate?.totalQuestionsNumber = questions.count
+        gameSessionDelegate = Game.shared.gameSession.self
+        gameView?.delegate = self
+        gameSessionDelegate?.totalQuestionsNumber = questions.count
 
-        self.setupQuestion()
+        setupQuestion()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = true
+        navigationController?.isNavigationBarHidden = true
     }
 
     // MARK: - Private functions
@@ -122,14 +122,14 @@ final class GameViewController: UIViewController {
 
         while counter != 2 {
             let number = Int.random(in: 0...3)
-            let userAnswer = self.gameView?.answerButtons[number].titleLabel?.text
+            let userAnswer = gameView?.answerButtons[number].titleLabel?.text
 
             guard
                 number != previouslyNumber,
-                userAnswer != self.questions[currentQuestion].correctAnswer
+                userAnswer != questions[currentQuestion].correctAnswer
             else { continue }
 
-            self.gameView?.answerButtonCofigure(by: number)
+            gameView?.answerButtonCofigure(by: number)
             previouslyNumber = number
             counter += 1
         }
@@ -139,10 +139,10 @@ final class GameViewController: UIViewController {
     private func useAuditoryHelpHint() {
         var text = String()
 
-        self.gameView?.answerButtons.enumerated().forEach { (index, button) in
+        gameView?.answerButtons.enumerated().forEach { (index, button) in
             guard
                 let answer = button.titleLabel?.text,
-                let percent = self.questions[currentQuestion].answers[answer]
+                let percent = questions[currentQuestion].answers[answer]
             else { return }
 
             text += "\tЗа \"\(answer)\" --> \(percent)% зала\n"
@@ -150,8 +150,8 @@ final class GameViewController: UIViewController {
 
         text.removeLast(2)
 
-        self.gameView?.percentAnswerLabelCofigure(with: text)
-        self.gameView?.percentsLabelView.isHidden = false
+        gameView?.percentAnswerLabelCofigure(with: text)
+        gameView?.percentsLabelView.isHidden = false
     }
 
     /// Use call friend hint and display result on screen
@@ -166,17 +166,17 @@ final class GameViewController: UIViewController {
 
         switch version {
             case 0..<30:
-                friendAnswer = self.getIncorrectFriendAnswer()
+                friendAnswer = getIncorrectFriendAnswer()
             case 30..<60:
-                friendAnswer = self.getPartialIncorrectFriendAnswer()
+                friendAnswer = getPartialIncorrectFriendAnswer()
             case 60..<90:
-                friendAnswer = self.getFullCorrectFriendAnswer()
+                friendAnswer = getFullCorrectFriendAnswer()
             default:
                 break
         }
 
-        self.gameView?.percentAnswerLabelCofigure(with: friendAnswer)
-        self.gameView?.percentsLabelView.isHidden = false
+        gameView?.percentAnswerLabelCofigure(with: friendAnswer)
+        gameView?.percentsLabelView.isHidden = false
     }
 
     /// Returns a possibly completely incorrect friend's answer
@@ -188,7 +188,7 @@ final class GameViewController: UIViewController {
 
         while answers.count != 2 {
             let number = Int.random(in: 0...3)
-            let userAnswer = self.gameView?.answerButtons[number].titleLabel?.text
+            let userAnswer = gameView?.answerButtons[number].titleLabel?.text
 
             guard userAnswer != answers.first else { continue }
 
@@ -207,15 +207,15 @@ final class GameViewController: UIViewController {
 
         while incorrectNumber < 0 {
             let number = Int.random(in: 0...3)
-            let userAnswer = self.gameView?.answerButtons[number].titleLabel?.text
+            let userAnswer = gameView?.answerButtons[number].titleLabel?.text
 
-            if userAnswer != self.questions[currentQuestion].correctAnswer {
+            if userAnswer != questions[currentQuestion].correctAnswer {
                 incorrectNumber = number
             }
         }
 
-        var answers: Set<String> = [self.gameView?.answerButtons[incorrectNumber].titleLabel?.text ?? "",
-                                    self.questions[currentQuestion].correctAnswer]
+        var answers: Set<String> = [gameView?.answerButtons[incorrectNumber].titleLabel?.text ?? "",
+                                    questions[currentQuestion].correctAnswer]
 
         return "Привет! Я уверен, что это либо «\(answers.popFirst() ?? "")», либо «\(answers.popFirst() ?? "")» 🙂"
     }
@@ -225,7 +225,7 @@ final class GameViewController: UIViewController {
     /// Version #3: "Friend" is sure of the answer and his version is the correct answer
     /// - Returns: A string containing a completely correct friend's answer
     private func getFullCorrectFriendAnswer() -> String {
-        let correctAnswer = self.questions[currentQuestion].correctAnswer
+        let correctAnswer = questions[currentQuestion].correctAnswer
         return "Привет! Прямо в точку, я знаю ответ! 😋\nПравильный вариант - это «\(correctAnswer)»"
     }
 }
@@ -235,7 +235,7 @@ final class GameViewController: UIViewController {
 extension GameViewController: GameViewDelegate {
     
     func gameExit() {
-        Game.shared.didEndGame(with: self.isLost)
+        Game.shared.didEndGame(with: isLost)
 
         navigationController?.popViewController(animated: true)
     }
@@ -248,18 +248,18 @@ extension GameViewController: GameViewDelegate {
     }
     
     func answerButtonTapped(with playerAnswer: String) {
-        if self.gameView?.percentsLabelView.isHidden == false {
-            self.gameView?.percentsLabelView.isHidden = true
+        if gameView?.percentsLabelView.isHidden == false {
+            gameView?.percentsLabelView.isHidden = true
         }
 
         if playerAnswer == questions[currentQuestion].correctAnswer {
             gameSessionDelegate?.increaseCorrectAnswersNumber()
 
-            self.currentQuestion += 1
-            self.setupQuestion()
+            currentQuestion += 1
+            setupQuestion()
         } else {
-            self.isLost = true
-            self.gameExit()
+            isLost = true
+            gameExit()
         }
     }
 
