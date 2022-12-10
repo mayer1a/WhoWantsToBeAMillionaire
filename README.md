@@ -57,7 +57,7 @@
 
 ## Поддержка системных тем
 
-![themes](https://github.com/mayer1a/iOSAppUI/blob/main/DescriptionImages/screenThemes.png)
+![themes](https://github.com/mayer1a/WhoWantsToBeAMillionaire/blob/main/DescriptionImages/screenThemes.png)
 
 Поддерживаются системные темы, при переходе системы в темный режим, приложение перестраивает цветовую палитру.
 
@@ -73,7 +73,7 @@
 
 ---
 
-### Благодарность
+## Благодарность
 
 Все иконки в приложении взяты с сайта https://www.flaticon.com от автора <a href="https://www.freepik.com">Freepik</a>
 
