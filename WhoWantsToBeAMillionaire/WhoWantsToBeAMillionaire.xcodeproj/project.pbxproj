@@ -214,6 +214,14 @@
 				49C80EA229376A4600123107 /* Assets.xcassets */,
 				49C80EA729376A4600123107 /* Info.plist */,
 				49C80EA429376A4600123107 /* LaunchScreen.storyboard */,
+				49C80E9629376A4600123107 /* AppDelegate.swift */,
+				49C80E9829376A4600123107 /* SceneDelegate.swift */,
+				49C80E9A29376A4600123107 /* ViewController.swift */,
+				49C80E9C29376A4600123107 /* Main.storyboard */,
+				49C80EA229376A4600123107 /* Assets.xcassets */,
+				49C80EA429376A4600123107 /* LaunchScreen.storyboard */,
+				49C80EA729376A4600123107 /* Info.plist */,
+				49C80E9F29376A4600123107 /* WhoWantsToBeAMillionaire.xcdatamodeld */,
 			);
 			path = WhoWantsToBeAMillionaire;
 			sourceTree = "<group>";

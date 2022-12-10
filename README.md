@@ -73,7 +73,7 @@
 
 ---
 
-### Благодарность
+## Благодарность
 
 Все иконки в приложении взяты с сайта https://www.flaticon.com от автора <a href="https://www.freepik.com">Freepik</a>
 
