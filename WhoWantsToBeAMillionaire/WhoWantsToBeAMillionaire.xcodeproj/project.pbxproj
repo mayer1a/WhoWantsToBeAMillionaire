@@ -7,22 +7,48 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		492A1E5C293B3D70002A7C7A /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A1E5B293B3D70002A7C7A /* Question.swift */; };
+		492A1E84293B7BB2002A7C7A /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A1E83293B7BB2002A7C7A /* MainMenuView.swift */; };
+		492A1E86293CB95C002A7C7A /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A1E85293CB95C002A7C7A /* GameViewController.swift */; };
+		492A1E88293CB9B8002A7C7A /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A1E87293CB9B8002A7C7A /* GameView.swift */; };
+		492A1E8D293DCBAF002A7C7A /* ScoreTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A1E8C293DCBAF002A7C7A /* ScoreTableView.swift */; };
+		492A1E8F293DD36D002A7C7A /* ScoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A1E8E293DD36D002A7C7A /* ScoreTableViewCell.swift */; };
+		492A1E91293DDF6A002A7C7A /* ScoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A1E90293DDF6A002A7C7A /* ScoreTableViewController.swift */; };
+		492A1E93293DEE9C002A7C7A /* ReusableHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A1E92293DEE9C002A7C7A /* ReusableHeaderFooterView.swift */; };
+		492A1E95293E0CF3002A7C7A /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A1E94293E0CF3002A7C7A /* Game.swift */; };
+		492A1E97293E0D44002A7C7A /* GameSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A1E96293E0D43002A7C7A /* GameSession.swift */; };
+		492A1E99293E23AA002A7C7A /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A1E98293E23AA002A7C7A /* Score.swift */; };
+		492A1E9B293E613D002A7C7A /* ScoresCareTaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A1E9A293E613D002A7C7A /* ScoresCareTaker.swift */; };
+		492A1E9D293EEFC9002A7C7A /* HelpPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A1E9C293EEFC9002A7C7A /* HelpPageViewController.swift */; };
+		492A1E9F293EEFFE002A7C7A /* HelpPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A1E9E293EEFFE002A7C7A /* HelpPageView.swift */; };
+		492A1EA1293F7216002A7C7A /* SettingCareTaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A1EA0293F7216002A7C7A /* SettingCareTaker.swift */; };
 		49C80E9729376A4600123107 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C80E9629376A4600123107 /* AppDelegate.swift */; };
 		49C80E9929376A4600123107 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C80E9829376A4600123107 /* SceneDelegate.swift */; };
-		49C80E9B29376A4600123107 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C80E9A29376A4600123107 /* ViewController.swift */; };
-		49C80E9E29376A4600123107 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49C80E9C29376A4600123107 /* Main.storyboard */; };
-		49C80EA129376A4600123107 /* WhoWantsToBeAMillionaire.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49C80E9F29376A4600123107 /* WhoWantsToBeAMillionaire.xcdatamodeld */; };
+		49C80E9B29376A4600123107 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C80E9A29376A4600123107 /* MainMenuViewController.swift */; };
 		49C80EA329376A4600123107 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49C80EA229376A4600123107 /* Assets.xcassets */; };
 		49C80EA629376A4600123107 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49C80EA429376A4600123107 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		492A1E5B293B3D70002A7C7A /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		492A1E83293B7BB2002A7C7A /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
+		492A1E85293CB95C002A7C7A /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		492A1E87293CB9B8002A7C7A /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		492A1E8C293DCBAF002A7C7A /* ScoreTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTableView.swift; sourceTree = "<group>"; };
+		492A1E8E293DD36D002A7C7A /* ScoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTableViewCell.swift; sourceTree = "<group>"; };
+		492A1E90293DDF6A002A7C7A /* ScoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTableViewController.swift; sourceTree = "<group>"; };
+		492A1E92293DEE9C002A7C7A /* ReusableHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableHeaderFooterView.swift; sourceTree = "<group>"; };
+		492A1E94293E0CF3002A7C7A /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		492A1E96293E0D43002A7C7A /* GameSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSession.swift; sourceTree = "<group>"; };
+		492A1E98293E23AA002A7C7A /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
+		492A1E9A293E613D002A7C7A /* ScoresCareTaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresCareTaker.swift; sourceTree = "<group>"; };
+		492A1E9C293EEFC9002A7C7A /* HelpPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpPageViewController.swift; sourceTree = "<group>"; };
+		492A1E9E293EEFFE002A7C7A /* HelpPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpPageView.swift; sourceTree = "<group>"; };
+		492A1EA0293F7216002A7C7A /* SettingCareTaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCareTaker.swift; sourceTree = "<group>"; };
 		49C80E9329376A4600123107 /* WhoWantsToBeAMillionaire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhoWantsToBeAMillionaire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49C80E9629376A4600123107 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49C80E9829376A4600123107 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		49C80E9A29376A4600123107 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		49C80E9D29376A4600123107 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		49C80EA029376A4600123107 /* WhoWantsToBeAMillionaire.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WhoWantsToBeAMillionaire.xcdatamodel; sourceTree = "<group>"; };
+		49C80E9A29376A4600123107 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		49C80EA229376A4600123107 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49C80EA529376A4600123107 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49C80EA729376A4600123107 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -39,6 +65,126 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49BB23EF29431B9000D7A3D0 /* MainMenuScreen */ = {
+			isa = PBXGroup;
+			children = (
+				49BB23FE29431C7700D7A3D0 /* View */,
+				49BB23FF29431C7C00D7A3D0 /* Controller */,
+			);
+			path = MainMenuScreen;
+			sourceTree = "<group>";
+		};
+		49BB23F029431BD500D7A3D0 /* GameScreen */ = {
+			isa = PBXGroup;
+			children = (
+				49BB23FA29431C6200D7A3D0 /* Model */,
+				49BB23FB29431C6800D7A3D0 /* View */,
+				49BB23FC29431C6C00D7A3D0 /* Controller */,
+			);
+			path = GameScreen;
+			sourceTree = "<group>";
+		};
+		49BB23F129431C0000D7A3D0 /* ScoretableScreen */ = {
+			isa = PBXGroup;
+			children = (
+				49BB23F429431C3E00D7A3D0 /* Model */,
+				49BB23F829431C5700D7A3D0 /* View */,
+				49BB23F929431C5C00D7A3D0 /* Controller */,
+			);
+			path = ScoretableScreen;
+			sourceTree = "<group>";
+		};
+		49BB23F229431C1000D7A3D0 /* HelpPageScreen */ = {
+			isa = PBXGroup;
+			children = (
+				49BB23F629431C4B00D7A3D0 /* View */,
+				49BB23F729431C5100D7A3D0 /* Controller */,
+			);
+			path = HelpPageScreen;
+			sourceTree = "<group>";
+		};
+		49BB23F429431C3E00D7A3D0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				492A1E98293E23AA002A7C7A /* Score.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		49BB23F629431C4B00D7A3D0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				492A1E9E293EEFFE002A7C7A /* HelpPageView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		49BB23F729431C5100D7A3D0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				492A1E9C293EEFC9002A7C7A /* HelpPageViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		49BB23F829431C5700D7A3D0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				492A1E8C293DCBAF002A7C7A /* ScoreTableView.swift */,
+				492A1E8E293DD36D002A7C7A /* ScoreTableViewCell.swift */,
+				492A1E92293DEE9C002A7C7A /* ReusableHeaderFooterView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		49BB23F929431C5C00D7A3D0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				492A1E90293DDF6A002A7C7A /* ScoreTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		49BB23FA29431C6200D7A3D0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				492A1E5B293B3D70002A7C7A /* Question.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		49BB23FB29431C6800D7A3D0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				492A1E87293CB9B8002A7C7A /* GameView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		49BB23FC29431C6C00D7A3D0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				492A1E85293CB95C002A7C7A /* GameViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		49BB23FE29431C7700D7A3D0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				492A1E83293B7BB2002A7C7A /* MainMenuView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		49BB23FF29431C7C00D7A3D0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				49C80E9A29376A4600123107 /* MainMenuViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		49C80E8A29376A4600123107 = {
 			isa = PBXGroup;
 			children = (
@@ -58,16 +204,45 @@
 		49C80E9529376A4600123107 /* WhoWantsToBeAMillionaire */ = {
 			isa = PBXGroup;
 			children = (
-				49C80E9629376A4600123107 /* AppDelegate.swift */,
-				49C80E9829376A4600123107 /* SceneDelegate.swift */,
-				49C80E9A29376A4600123107 /* ViewController.swift */,
-				49C80E9C29376A4600123107 /* Main.storyboard */,
+				49BB23EF29431B9000D7A3D0 /* MainMenuScreen */,
+				49BB23F029431BD500D7A3D0 /* GameScreen */,
+				49BB23F129431C0000D7A3D0 /* ScoretableScreen */,
+				49BB23F229431C1000D7A3D0 /* HelpPageScreen */,
+				49E2AD8D293B2DA20007DFC8 /* CareTaker */,
+				49E2AD8C293B2D770007DFC8 /* Fundamental */,
+				49E2AD8E293B2DC90007DFC8 /* Game */,
 				49C80EA229376A4600123107 /* Assets.xcassets */,
-				49C80EA429376A4600123107 /* LaunchScreen.storyboard */,
 				49C80EA729376A4600123107 /* Info.plist */,
-				49C80E9F29376A4600123107 /* WhoWantsToBeAMillionaire.xcdatamodeld */,
+				49C80EA429376A4600123107 /* LaunchScreen.storyboard */,
 			);
 			path = WhoWantsToBeAMillionaire;
+			sourceTree = "<group>";
+		};
+		49E2AD8C293B2D770007DFC8 /* Fundamental */ = {
+			isa = PBXGroup;
+			children = (
+				49C80E9629376A4600123107 /* AppDelegate.swift */,
+				49C80E9829376A4600123107 /* SceneDelegate.swift */,
+			);
+			path = Fundamental;
+			sourceTree = "<group>";
+		};
+		49E2AD8D293B2DA20007DFC8 /* CareTaker */ = {
+			isa = PBXGroup;
+			children = (
+				492A1E9A293E613D002A7C7A /* ScoresCareTaker.swift */,
+				492A1EA0293F7216002A7C7A /* SettingCareTaker.swift */,
+			);
+			path = CareTaker;
+			sourceTree = "<group>";
+		};
+		49E2AD8E293B2DC90007DFC8 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				492A1E94293E0CF3002A7C7A /* Game.swift */,
+				492A1E96293E0D43002A7C7A /* GameSession.swift */,
+			);
+			path = Game;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,7 +305,6 @@
 			files = (
 				49C80EA629376A4600123107 /* LaunchScreen.storyboard in Resources */,
 				49C80EA329376A4600123107 /* Assets.xcassets in Resources */,
-				49C80E9E29376A4600123107 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,9 +315,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49C80EA129376A4600123107 /* WhoWantsToBeAMillionaire.xcdatamodeld in Sources */,
-				49C80E9B29376A4600123107 /* ViewController.swift in Sources */,
+				492A1E91293DDF6A002A7C7A /* ScoreTableViewController.swift in Sources */,
+				492A1E9B293E613D002A7C7A /* ScoresCareTaker.swift in Sources */,
+				492A1E8F293DD36D002A7C7A /* ScoreTableViewCell.swift in Sources */,
+				492A1E86293CB95C002A7C7A /* GameViewController.swift in Sources */,
+				492A1E95293E0CF3002A7C7A /* Game.swift in Sources */,
+				492A1EA1293F7216002A7C7A /* SettingCareTaker.swift in Sources */,
+				492A1E99293E23AA002A7C7A /* Score.swift in Sources */,
+				492A1E97293E0D44002A7C7A /* GameSession.swift in Sources */,
+				492A1E84293B7BB2002A7C7A /* MainMenuView.swift in Sources */,
+				492A1E5C293B3D70002A7C7A /* Question.swift in Sources */,
+				492A1E9D293EEFC9002A7C7A /* HelpPageViewController.swift in Sources */,
+				492A1E8D293DCBAF002A7C7A /* ScoreTableView.swift in Sources */,
+				492A1E93293DEE9C002A7C7A /* ReusableHeaderFooterView.swift in Sources */,
+				49C80E9B29376A4600123107 /* MainMenuViewController.swift in Sources */,
+				492A1E9F293EEFFE002A7C7A /* HelpPageView.swift in Sources */,
 				49C80E9729376A4600123107 /* AppDelegate.swift in Sources */,
+				492A1E88293CB9B8002A7C7A /* GameView.swift in Sources */,
 				49C80E9929376A4600123107 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -151,14 +339,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		49C80E9C29376A4600123107 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				49C80E9D29376A4600123107 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		49C80EA429376A4600123107 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -289,6 +469,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 277JX9R2RP;
@@ -298,7 +479,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.educational-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -306,9 +487,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Mayer-Inc.WhoWantsToBeAMillionaire";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -323,6 +505,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 277JX9R2RP;
@@ -332,7 +515,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.educational-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -340,9 +523,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Mayer-Inc.WhoWantsToBeAMillionaire";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -374,19 +558,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		49C80E9F29376A4600123107 /* WhoWantsToBeAMillionaire.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				49C80EA029376A4600123107 /* WhoWantsToBeAMillionaire.xcdatamodel */,
-			);
-			currentVersion = 49C80EA029376A4600123107 /* WhoWantsToBeAMillionaire.xcdatamodel */;
-			path = WhoWantsToBeAMillionaire.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 49C80E8B29376A4600123107 /* Project object */;
 }
