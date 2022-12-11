@@ -39,6 +39,7 @@ final class ScoreTableViewController: UIViewController {
                                  forHeaderFooterViewReuseIdentifier: ReusableHeaderFooterView.headerFooterId)
 
         navigationController?.navigationBar.topItem?.backButtonTitle = "Назад"
+        navigationController?.isNavigationBarHidden = false
 
         guard let rightBarButton = scoreTableView?.clearScoreTableButton else { return }
         
@@ -89,7 +90,7 @@ extension ScoreTableViewController: UITableViewDelegate, UITableViewDataSource {
         let record = Game.shared.scores[indexPath.section]
 
         let date = dateFormatter.string(from: record.date)
-        let level = record.isHardcoreLevel ? "Хардкор" : "Легко"
+        let level = record.difficultyLevel == .easy ? "Легко" : "Хардкор"
         cell.labelsConfigure(with: (date, record.score, record.coins, record.usedHintsNumber, level))
 
         return cell

@@ -12,5 +12,5 @@ struct Score: Codable {
     let score: Int
     let coins: Int
     let usedHintsNumber: Int
-    let isHardcoreLevel: Bool
+    let difficultyLevel: GameDifficulty
 }

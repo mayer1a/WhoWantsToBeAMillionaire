@@ -28,14 +28,13 @@ final class MainMenuViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.isNavigationBarHidden = false
+        navigationController?.isNavigationBarHidden = true
         
         guard let lastScoreResult = Game.shared.scores.first else {
             menuView?.scoreLabelConfigurate()
             return
         }
         
-        menuView?.levelSwitchConfigurate(with: Game.shared.isHardcoreLevel)
         menuView?.scoreLabelConfigurate(with: (lastScoreResult.score, lastScoreResult.coins))
     }
 }
@@ -44,16 +43,14 @@ final class MainMenuViewController: UIViewController {
 
 extension MainMenuViewController: MainMenuViewDelegate {
     
-    func gameLevelChanged() {
-        Game.shared.toggleGameLevel()
-    }
-    
     func buttonDidTapped(with tag: Int) {
         switch tag {
             case 0:
                 navigationController?.pushViewController(GameViewController(), animated: true)
             case 1:
                 navigationController?.pushViewController(ScoreTableViewController(), animated: true)
+            case 2:
+                navigationController?.pushViewController(SettingsViewController(), animated: true)
             default:
                 break
         }

@@ -21,22 +21,29 @@ final class Game {
         }
     }
 
-    private(set) var isHardcoreLevel: Bool {
+    private(set) var difficultyLevel: GameDifficulty {
         didSet {
-            settingCareTaker.saveSettings(isHardcoreLevel: isHardcoreLevel)
+            settingsCareTaker.saveDifficultySettings(difficultyLevel)
+        }
+    }
+
+    private(set) var questionOrder: Int {
+        didSet {
+            settingsCareTaker.saveQuestionOrderSettings(questionOrder)
         }
     }
 
     // MARK: - Private properties
 
     private let scoresCareTaker = ScoresCareTaker()
-    private let settingCareTaker = SettingCareTaker()
+    private let settingsCareTaker = SettingsCareTaker()
 
     // MARK: - Private constructions
 
     private init() {
         scores = scoresCareTaker.restoreScores()
-        isHardcoreLevel = settingCareTaker.restoreSettings()
+        difficultyLevel = settingsCareTaker.restoreDifficultySettings()
+        questionOrder = settingsCareTaker.restoreQuestionOrderSettings()
     }
 
     // MARK: - Functions
@@ -49,8 +56,12 @@ final class Game {
         scores = []
     }
 
-    func toggleGameLevel() {
-        isHardcoreLevel.toggle()
+    func setGameLevel(with difficulty: GameDifficulty) {
+        difficultyLevel = difficulty
+    }
+
+    func setQuestionOrder(with value: Int) {
+        questionOrder = value
     }
 
     func didEndGame(with loss: Bool) {
@@ -74,7 +85,7 @@ final class Game {
                           score: gameSession.scores,
                           coins: coins,
                           usedHintsNumber: usedHintsNumber,
-                          isHardcoreLevel: isHardcoreLevel)
+                          difficultyLevel: difficultyLevel)
 
         addScoreEntry(score)
 

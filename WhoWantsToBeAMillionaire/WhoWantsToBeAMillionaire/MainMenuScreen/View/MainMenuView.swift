@@ -10,7 +10,6 @@ import UIKit
 protocol MainMenuViewDelegate: AnyObject {
     
     func buttonDidTapped(with tag: Int)
-    func gameLevelChanged()
 }
 
 final class MainMenuView: UIView {
@@ -46,7 +45,7 @@ final class MainMenuView: UIView {
     private var playButton: UIButton
     private var scoreButton: UIButton
     private var scoreLabel: UILabel
-    private var levelSwitch: UISwitch
+    private var settingsButton: UIButton
     
     // MARK: - Constructions
     
@@ -54,8 +53,8 @@ final class MainMenuView: UIView {
         scoreLabel = UILabel()
         playButton = UIButton()
         scoreButton = UIButton()
-        levelSwitch = UISwitch()
-        
+        settingsButton = UIButton()
+
         super.init(frame: .zero)
         
         configureViewComponents()
@@ -63,15 +62,6 @@ final class MainMenuView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        levelSwitch.layer.borderColor = UIColor(named: "SwitchBorderColor")?.cgColor
-        levelSwitch.layer.cornerRadius = levelSwitch.frame.height / 2
-        levelSwitch.layer.masksToBounds = true
-        levelSwitch.layer.borderWidth = 1
     }
     
     // MARK: - Functions
@@ -82,10 +72,6 @@ final class MainMenuView: UIView {
     
     func scoreLabelConfigurate(with text: String = "") {
         scoreLabel.text = text
-    }
-    
-    func levelSwitchConfigurate(with state: Bool) {
-        levelSwitch.setOn(state, animated: false)
     }
     
     // MARK: - Private functions
@@ -112,22 +98,16 @@ final class MainMenuView: UIView {
         
         scoreLabel = labelTemplate
         scoreLabel.textAlignment = .center
-        
-        levelSwitch.setOn(false, animated: false)
-        levelSwitch.onTintColor = UIColor(named: "SwitchTintColor")
-        levelSwitch.clipsToBounds = true
-        levelSwitch.translatesAutoresizingMaskIntoConstraints = false
-        levelSwitch.addTarget(self, action: #selector(gameLevelChanged(_:)), for: .valueChanged)
-        
-        let easyLabel = labelTemplate
-        easyLabel.text = "Хардкорный режим:"
-        
+
+        settingsButton = buttonTemplate
+        settingsButton.setBackgroundImage(UIImage(named: "settings"), for: .normal)
+        settingsButton.tag = 2
+
         addSubview(playButton)
         addSubview(scoreButton)
         addSubview(scoreLabel)
-        addSubview(levelSwitch)
-        addSubview(easyLabel)
-        
+        addSubview(settingsButton)
+
         NSLayoutConstraint.activate([
             playButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 128.0),
             playButton.widthAnchor.constraint(equalTo: playButton.heightAnchor),
@@ -144,20 +124,13 @@ final class MainMenuView: UIView {
             scoreLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -10),
             scoreLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10),
             scoreLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-            
-            levelSwitch.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
-            levelSwitch.leadingAnchor.constraint(equalTo: easyLabel.trailingAnchor, constant: 50),
-            
-            easyLabel.centerYAnchor.constraint(equalTo: levelSwitch.centerYAnchor),
-            easyLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10)
+
+            settingsButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
+            settingsButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10)
         ])
     }
     
     @objc private func buttonDidTapped(_ sender: UIButton) {
         delegate?.buttonDidTapped(with: sender.tag)
-    }
-    
-    @objc private func gameLevelChanged(_ sender: UISwitch) {
-        delegate?.gameLevelChanged()
     }
 }

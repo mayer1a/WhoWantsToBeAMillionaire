@@ -21,7 +21,10 @@
 		492A1E9B293E613D002A7C7A /* ScoresCareTaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A1E9A293E613D002A7C7A /* ScoresCareTaker.swift */; };
 		492A1E9D293EEFC9002A7C7A /* HelpPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A1E9C293EEFC9002A7C7A /* HelpPageViewController.swift */; };
 		492A1E9F293EEFFE002A7C7A /* HelpPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A1E9E293EEFFE002A7C7A /* HelpPageView.swift */; };
-		492A1EA1293F7216002A7C7A /* SettingCareTaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A1EA0293F7216002A7C7A /* SettingCareTaker.swift */; };
+		492A1EA1293F7216002A7C7A /* SettingsCareTaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A1EA0293F7216002A7C7A /* SettingsCareTaker.swift */; };
+		496711462944C60E009D43D3 /* GameDifficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496711452944C60E009D43D3 /* GameDifficulty.swift */; };
+		4967114C2944CE7D009D43D3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4967114B2944CE7D009D43D3 /* SettingsView.swift */; };
+		4967114E2944CE8F009D43D3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4967114D2944CE8F009D43D3 /* SettingsViewController.swift */; };
 		49C80E9729376A4600123107 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C80E9629376A4600123107 /* AppDelegate.swift */; };
 		49C80E9929376A4600123107 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C80E9829376A4600123107 /* SceneDelegate.swift */; };
 		49C80E9B29376A4600123107 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C80E9A29376A4600123107 /* MainMenuViewController.swift */; };
@@ -44,7 +47,10 @@
 		492A1E9A293E613D002A7C7A /* ScoresCareTaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresCareTaker.swift; sourceTree = "<group>"; };
 		492A1E9C293EEFC9002A7C7A /* HelpPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpPageViewController.swift; sourceTree = "<group>"; };
 		492A1E9E293EEFFE002A7C7A /* HelpPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpPageView.swift; sourceTree = "<group>"; };
-		492A1EA0293F7216002A7C7A /* SettingCareTaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCareTaker.swift; sourceTree = "<group>"; };
+		492A1EA0293F7216002A7C7A /* SettingsCareTaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCareTaker.swift; sourceTree = "<group>"; };
+		496711452944C60E009D43D3 /* GameDifficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDifficulty.swift; sourceTree = "<group>"; };
+		4967114B2944CE7D009D43D3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		4967114D2944CE8F009D43D3 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		49C80E9329376A4600123107 /* WhoWantsToBeAMillionaire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhoWantsToBeAMillionaire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49C80E9629376A4600123107 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49C80E9829376A4600123107 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +71,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		496711432944C5C2009D43D3 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				49E2AD8D293B2DA20007DFC8 /* CareTaker */,
+				496711452944C60E009D43D3 /* GameDifficulty.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		496711482944CE43009D43D3 /* SettingsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				496711492944CE55009D43D3 /* View */,
+				4967114A2944CE5B009D43D3 /* Controller */,
+			);
+			path = SettingsScreen;
+			sourceTree = "<group>";
+		};
+		496711492944CE55009D43D3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4967114B2944CE7D009D43D3 /* SettingsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4967114A2944CE5B009D43D3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4967114D2944CE8F009D43D3 /* SettingsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		49BB23EF29431B9000D7A3D0 /* MainMenuScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,7 +248,8 @@
 				49BB23F029431BD500D7A3D0 /* GameScreen */,
 				49BB23F129431C0000D7A3D0 /* ScoretableScreen */,
 				49BB23F229431C1000D7A3D0 /* HelpPageScreen */,
-				49E2AD8D293B2DA20007DFC8 /* CareTaker */,
+				496711482944CE43009D43D3 /* SettingsScreen */,
+				496711432944C5C2009D43D3 /* Utilities */,
 				49E2AD8C293B2D770007DFC8 /* Fundamental */,
 				49E2AD8E293B2DC90007DFC8 /* Game */,
 				49C80EA229376A4600123107 /* Assets.xcassets */,
@@ -231,7 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				492A1E9A293E613D002A7C7A /* ScoresCareTaker.swift */,
-				492A1EA0293F7216002A7C7A /* SettingCareTaker.swift */,
+				492A1EA0293F7216002A7C7A /* SettingsCareTaker.swift */,
 			);
 			path = CareTaker;
 			sourceTree = "<group>";
@@ -317,10 +358,12 @@
 			files = (
 				492A1E91293DDF6A002A7C7A /* ScoreTableViewController.swift in Sources */,
 				492A1E9B293E613D002A7C7A /* ScoresCareTaker.swift in Sources */,
+				4967114E2944CE8F009D43D3 /* SettingsViewController.swift in Sources */,
 				492A1E8F293DD36D002A7C7A /* ScoreTableViewCell.swift in Sources */,
 				492A1E86293CB95C002A7C7A /* GameViewController.swift in Sources */,
 				492A1E95293E0CF3002A7C7A /* Game.swift in Sources */,
-				492A1EA1293F7216002A7C7A /* SettingCareTaker.swift in Sources */,
+				4967114C2944CE7D009D43D3 /* SettingsView.swift in Sources */,
+				492A1EA1293F7216002A7C7A /* SettingsCareTaker.swift in Sources */,
 				492A1E99293E23AA002A7C7A /* Score.swift in Sources */,
 				492A1E97293E0D44002A7C7A /* GameSession.swift in Sources */,
 				492A1E84293B7BB2002A7C7A /* MainMenuView.swift in Sources */,
@@ -331,6 +374,7 @@
 				49C80E9B29376A4600123107 /* MainMenuViewController.swift in Sources */,
 				492A1E9F293EEFFE002A7C7A /* HelpPageView.swift in Sources */,
 				49C80E9729376A4600123107 /* AppDelegate.swift in Sources */,
+				496711462944C60E009D43D3 /* GameDifficulty.swift in Sources */,
 				492A1E88293CB9B8002A7C7A /* GameView.swift in Sources */,
 				49C80E9929376A4600123107 /* SceneDelegate.swift in Sources */,
 			);

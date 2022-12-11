@@ -23,6 +23,7 @@ final class GameViewController: UIViewController {
     // MARK: - Properties
 
     weak var gameSessionDelegate: GameSessionDelegate?
+    var difficulty: GameDifficulty = .easy
 
     // MARK: - Private properties
 
@@ -31,7 +32,7 @@ final class GameViewController: UIViewController {
     }
 
     private lazy var questions: [Question] = {
-        return Game.shared.isHardcoreLevel ? Question.hardcoreQuestions() : Question.easyQuestions()
+        return Game.shared.difficultyLevel == .easy ? Question.easyQuestions() : Question.hardcoreQuestions()
     }()
 
     private lazy var currentQuestion: Int = {
