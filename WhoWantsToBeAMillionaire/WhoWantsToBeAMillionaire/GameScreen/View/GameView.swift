@@ -71,7 +71,6 @@ final class GameView: UIView {
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.systemBlue.cgColor
         button.addTarget(self, action: #selector(self.answerButtonTapped), for: .touchUpInside)
-        //        button.translatesAutoresizingMaskIntoConstraints = false
 
         return button
     }
