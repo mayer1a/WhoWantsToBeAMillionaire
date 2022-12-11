@@ -10,7 +10,7 @@ import UIKit
 protocol GameSessionDelegate: AnyObject {
 
     var totalQuestionsNumber: Int { get set }
-    var correctAnswers: Int { get }
+    var correctAnswers: Observable<Int> { get }
     var hintsAvailable: [Hint] { get }
     var coinsEarned: Int { get }
     var scores: Int { get }
@@ -61,6 +61,16 @@ final class GameViewController: UIViewController {
         gameView?.delegate = self
         gameSessionDelegate?.totalQuestionsNumber = orderedQuestions.count
 
+        gameSessionDelegate?.correctAnswers.addObserver(self, options: [.initial, .new]) { [weak self] (correctAnswers, _) in
+
+            guard
+                let totalQuestionsNumber = self?.gameSessionDelegate?.totalQuestionsNumber,
+                let scores = self?.gameSessionDelegate?.scores
+            else { return }
+
+            self?.gameView?.questionCounterLabelConfigure(with: (correctAnswers, totalQuestionsNumber, scores))
+        }
+        
         setupQuestion()
     }
 
@@ -81,9 +91,10 @@ final class GameViewController: UIViewController {
         }
 
         let question = orderedQuestions[currentQuestion]
+        let newCounterLabelValue = (currentQuestion, gameSession.totalQuestionsNumber, gameSession.scores)
 
         gameView?.questionLabel.text = question.text
-        gameView?.questionCounterLabelConfigure(with: (currentQuestion, gameSession.totalQuestionsNumber))
+        gameView?.questionCounterLabelConfigure(with: newCounterLabelValue)
 
         for (index, answer) in question.answers.enumerated() {
 

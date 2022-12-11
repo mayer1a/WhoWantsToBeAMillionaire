@@ -137,8 +137,8 @@ final class GameView: UIView {
 
     // MARK: - Functions
 
-    func questionCounterLabelConfigure(with value: (questionNumber: Int, totalQuestion: Int)) {
-        questionCounterLabel.text = "Вопрос \(value.questionNumber + 1) из \(value.totalQuestion)"
+    func questionCounterLabelConfigure(with value: (questionNumber: Int, totalQuestion: Int, scores: Int)) {
+        questionCounterLabel.text = "Вопрос \(value.questionNumber + 1) из \(value.totalQuestion) (\(value.scores)%)"
     }
 
     func answerButtonCofigure(by index: Int) {

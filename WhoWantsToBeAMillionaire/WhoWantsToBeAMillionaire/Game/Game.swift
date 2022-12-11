@@ -88,10 +88,10 @@ final class Game {
         var coins = Int()
 
         if loss {
-            switch gameSession.correctAnswers {
-                case 3..<6: coins = gameSession.coinsRange[gameSession.correctAnswers - 1]
-                case 6..<8: coins = gameSession.coinsRange[gameSession.correctAnswers - 1]
-                case 8...10: coins = gameSession.coinsRange[gameSession.correctAnswers - 1]
+            switch gameSession.correctAnswers.value {
+                case 3..<6: coins = gameSession.coinsRange[gameSession.correctAnswers.value - 1]
+                case 6..<8: coins = gameSession.coinsRange[gameSession.correctAnswers.value - 1]
+                case 8...10: coins = gameSession.coinsRange[gameSession.correctAnswers.value - 1]
                 default: break
             }
         } else {

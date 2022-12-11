@@ -23,7 +23,7 @@ final class GameSession {
 
     // MARK: - Private properties
 
-    private var correctAnswerCount: Int
+    private var correctAnswerCount: Observable<Int>
     private var questionsCount: Int
     private var playerEarnedCoins: Int
     private var scoresEarned: Int
@@ -32,7 +32,7 @@ final class GameSession {
     // MARK: - Constructions
 
     init() {
-        correctAnswerCount = Int()
+        correctAnswerCount = Observable<Int>(Int())
         questionsCount = Int()
         playerEarnedCoins = Int()
         scoresEarned = Int()
@@ -49,7 +49,7 @@ extension GameSession: GameSessionDelegate {
         set { questionsCount = newValue }
     }
 
-    var correctAnswers: Int {
+    var correctAnswers: Observable<Int> {
         get { return correctAnswerCount }
     }
 
@@ -66,9 +66,9 @@ extension GameSession: GameSessionDelegate {
     }
 
     func increaseCorrectAnswersNumber() {
-        correctAnswerCount += 1
-        playerEarnedCoins = coinsRange[correctAnswerCount - 1]
-        scoresEarned = 100 / totalQuestionsNumber * correctAnswerCount
+        correctAnswerCount.value += 1
+        playerEarnedCoins = coinsRange[correctAnswerCount.value - 1]
+        scoresEarned = 100 / totalQuestionsNumber * correctAnswerCount.value
     }
 
     func removeUsedHint(of usedHint: Hint) {
