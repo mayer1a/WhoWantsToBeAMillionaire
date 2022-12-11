@@ -33,6 +33,15 @@ final class Game {
         }
     }
 
+    var difficultyStrategy: DifficultyStrategy {
+        switch difficultyLevel {
+            case .easy:
+                return EasyDifficultyQuestionsStrategy()
+            case .medium, .hard:
+                return MediumDifficultyQuestionsStrategy()
+        }
+    }
+
     // MARK: - Private properties
 
     private let scoresCareTaker = ScoresCareTaker()
@@ -56,7 +65,7 @@ final class Game {
         scores = []
     }
 
-    func setGameLevel(with difficulty: GameDifficulty) {
+    func setDifficultyStrategy(with difficulty: GameDifficulty) {
         difficultyLevel = difficulty
     }
 

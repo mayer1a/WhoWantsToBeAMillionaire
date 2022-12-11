@@ -27,7 +27,6 @@ final class SettingsViewController: UIViewController {
         settingsView?.delegate = self
         settingsView?.levelControlConfigurate(with: Game.shared.difficultyLevel)
         settingsView?.orderControlConfigurate(with: Game.shared.questionOrder)
-        print(Game.shared.questionOrder)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -46,11 +45,11 @@ extension SettingsViewController: SettingsViewDelegate {
     func gameLevelChanged(with selectedIndex: Int) {
         switch selectedIndex {
             case 0:
-                Game.shared.setGameLevel(with: .easy)
+                Game.shared.setDifficultyStrategy(with: .easy)
             case 1:
-                Game.shared.setGameLevel(with: .medium)
+                Game.shared.setDifficultyStrategy(with: .medium)
             case 2:
-                Game.shared.setGameLevel(with: .hard)
+                Game.shared.setDifficultyStrategy(with: .hard)
             default:
                 break
         }
