@@ -27,7 +27,7 @@ final class Game {
         }
     }
 
-    private(set) var questionOrder: Int {
+    private(set) var questionOrder: QuestionsOrder {
         didSet {
             settingsCareTaker.saveQuestionOrderSettings(questionOrder)
         }
@@ -39,6 +39,15 @@ final class Game {
                 return EasyDifficultyQuestionsStrategy()
             case .medium, .hard:
                 return MediumDifficultyQuestionsStrategy()
+        }
+    }
+
+    var orderStrategy: QuestionOrderStrategy {
+        switch questionOrder {
+            case .serial:
+                return SeialQuestionsOrderStrategy()
+            case .random:
+                return RandomQuestionsOrderStrategy()
         }
     }
 
@@ -69,7 +78,7 @@ final class Game {
         difficultyLevel = difficulty
     }
 
-    func setQuestionOrder(with value: Int) {
+    func setQuestionOrder(with value: QuestionsOrder) {
         questionOrder = value
     }
 

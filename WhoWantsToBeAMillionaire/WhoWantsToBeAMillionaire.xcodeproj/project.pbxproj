@@ -26,6 +26,8 @@
 		4967114C2944CE7D009D43D3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4967114B2944CE7D009D43D3 /* SettingsView.swift */; };
 		4967114E2944CE8F009D43D3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4967114D2944CE8F009D43D3 /* SettingsViewController.swift */; };
 		496711512945D894009D43D3 /* DifficultyStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496711502945D894009D43D3 /* DifficultyStrategy.swift */; };
+		496711532945E365009D43D3 /* QuestionOrderStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496711522945E365009D43D3 /* QuestionOrderStrategy.swift */; };
+		496711552945E4BC009D43D3 /* QuestionsOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496711542945E4BC009D43D3 /* QuestionsOrder.swift */; };
 		49C80E9729376A4600123107 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C80E9629376A4600123107 /* AppDelegate.swift */; };
 		49C80E9929376A4600123107 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C80E9829376A4600123107 /* SceneDelegate.swift */; };
 		49C80E9B29376A4600123107 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C80E9A29376A4600123107 /* MainMenuViewController.swift */; };
@@ -53,6 +55,8 @@
 		4967114B2944CE7D009D43D3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		4967114D2944CE8F009D43D3 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		496711502945D894009D43D3 /* DifficultyStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyStrategy.swift; sourceTree = "<group>"; };
+		496711522945E365009D43D3 /* QuestionOrderStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionOrderStrategy.swift; sourceTree = "<group>"; };
+		496711542945E4BC009D43D3 /* QuestionsOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsOrder.swift; sourceTree = "<group>"; };
 		49C80E9329376A4600123107 /* WhoWantsToBeAMillionaire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhoWantsToBeAMillionaire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49C80E9629376A4600123107 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49C80E9829376A4600123107 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +82,7 @@
 			children = (
 				49E2AD8D293B2DA20007DFC8 /* CareTaker */,
 				496711452944C60E009D43D3 /* GameDifficulty.swift */,
+				496711542945E4BC009D43D3 /* QuestionsOrder.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -111,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				496711502945D894009D43D3 /* DifficultyStrategy.swift */,
+				496711522945E365009D43D3 /* QuestionOrderStrategy.swift */,
 			);
 			path = Strategies;
 			sourceTree = "<group>";
@@ -374,6 +380,7 @@
 				492A1E86293CB95C002A7C7A /* GameViewController.swift in Sources */,
 				492A1E95293E0CF3002A7C7A /* Game.swift in Sources */,
 				4967114C2944CE7D009D43D3 /* SettingsView.swift in Sources */,
+				496711532945E365009D43D3 /* QuestionOrderStrategy.swift in Sources */,
 				492A1EA1293F7216002A7C7A /* SettingsCareTaker.swift in Sources */,
 				492A1E99293E23AA002A7C7A /* Score.swift in Sources */,
 				492A1E97293E0D44002A7C7A /* GameSession.swift in Sources */,
@@ -384,6 +391,7 @@
 				492A1E8D293DCBAF002A7C7A /* ScoreTableView.swift in Sources */,
 				492A1E93293DEE9C002A7C7A /* ReusableHeaderFooterView.swift in Sources */,
 				49C80E9B29376A4600123107 /* MainMenuViewController.swift in Sources */,
+				496711552945E4BC009D43D3 /* QuestionsOrder.swift in Sources */,
 				492A1E9F293EEFFE002A7C7A /* HelpPageView.swift in Sources */,
 				49C80E9729376A4600123107 /* AppDelegate.swift in Sources */,
 				496711462944C60E009D43D3 /* GameDifficulty.swift in Sources */,

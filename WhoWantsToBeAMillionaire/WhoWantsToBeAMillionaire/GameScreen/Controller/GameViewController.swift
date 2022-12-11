@@ -34,6 +34,10 @@ final class GameViewController: UIViewController {
         return Game.shared.difficultyStrategy.getQuestions()
     }()
 
+    private lazy var orderedQuestions: [Question] = {
+        return Game.shared.orderStrategy.getOrderedQuestions(from: questions)
+    }()
+
     private lazy var currentQuestion: Int = {
         return 0
     }()
@@ -55,7 +59,7 @@ final class GameViewController: UIViewController {
 
         gameSessionDelegate = Game.shared.gameSession.self
         gameView?.delegate = self
-        gameSessionDelegate?.totalQuestionsNumber = questions.count
+        gameSessionDelegate?.totalQuestionsNumber = orderedQuestions.count
 
         setupQuestion()
     }
@@ -76,7 +80,7 @@ final class GameViewController: UIViewController {
             return
         }
 
-        let question = questions[currentQuestion]
+        let question = orderedQuestions[currentQuestion]
 
         gameView?.questionLabel.text = question.text
         gameView?.questionCounterLabelConfigure(with: (currentQuestion, gameSession.totalQuestionsNumber))
@@ -98,7 +102,7 @@ final class GameViewController: UIViewController {
 
             guard
                 number != previouslyNumber,
-                userAnswer != questions[currentQuestion].correctAnswer
+                userAnswer != orderedQuestions[currentQuestion].correctAnswer
             else { continue }
 
             gameView?.answerButtonCofigure(by: number)
@@ -113,7 +117,7 @@ final class GameViewController: UIViewController {
         gameView?.answerButtons.enumerated().forEach { (index, button) in
             guard
                 let answer = button.titleLabel?.text,
-                let percent = questions[currentQuestion].answers[answer]
+                let percent = orderedQuestions[currentQuestion].answers[answer]
             else { return }
 
             text += "\tЗа \"\(answer)\" --> \(percent)% зала\n"
@@ -166,19 +170,19 @@ final class GameViewController: UIViewController {
             let number = Int.random(in: 0...3)
             let userAnswer = gameView?.answerButtons[number].titleLabel?.text
 
-            if userAnswer != questions[currentQuestion].correctAnswer {
+            if userAnswer != orderedQuestions[currentQuestion].correctAnswer {
                 incorrectNumber = number
             }
         }
 
         var answers: Set<String> = [gameView?.answerButtons[incorrectNumber].titleLabel?.text ?? "",
-                                    questions[currentQuestion].correctAnswer]
+                                    orderedQuestions[currentQuestion].correctAnswer]
 
         return "Привет! Я уверен, что это либо «\(answers.popFirst() ?? "")», либо «\(answers.popFirst() ?? "")» 🙂"
     }
 
     private func getFullCorrectFriendAnswer() -> String {
-        let correctAnswer = questions[currentQuestion].correctAnswer
+        let correctAnswer = orderedQuestions[currentQuestion].correctAnswer
         return "Привет! Прямо в точку, я знаю ответ! 😋\nПравильный вариант - это «\(correctAnswer)»"
     }
 }
@@ -205,7 +209,7 @@ extension GameViewController: GameViewDelegate {
             gameView?.percentsLabelView.isHidden = true
         }
 
-        if playerAnswer == questions[currentQuestion].correctAnswer {
+        if playerAnswer == orderedQuestions[currentQuestion].correctAnswer {
             gameSessionDelegate?.increaseCorrectAnswersNumber()
 
             currentQuestion += 1
@@ -237,7 +241,7 @@ extension GameViewController: GameViewControllerDelegate {
     
     var hints: [String] {
         get {
-            let question = questions[currentQuestion]
+            let question = orderedQuestions[currentQuestion]
             return [question.fiftyTofiftyHint, question.auditoryHelpHint, question.callFriendHint]
         }
     }

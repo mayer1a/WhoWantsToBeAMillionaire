@@ -92,8 +92,8 @@ final class SettingsView: UIView {
         levelControl.selectedSegmentIndex = difficulty.rawValue
     }
 
-    func orderControlConfigurate(with selectedIndex: Int) {
-        questionOrderControl.selectedSegmentIndex = selectedIndex
+    func orderControlConfigurate(with order: QuestionsOrder) {
+        questionOrderControl.selectedSegmentIndex = order.rawValue
     }
 
     // MARK: - Private functions

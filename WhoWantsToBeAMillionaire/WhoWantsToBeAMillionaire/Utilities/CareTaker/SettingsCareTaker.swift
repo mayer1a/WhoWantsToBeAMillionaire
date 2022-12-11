@@ -35,7 +35,7 @@ final class SettingsCareTaker {
         }
     }
 
-    func saveQuestionOrderSettings (_ value: Int) {
+    func saveQuestionOrderSettings (_ value: QuestionsOrder) {
         do {
             let data = try encoder.encode(value)
 
@@ -56,14 +56,14 @@ final class SettingsCareTaker {
         }
     }
 
-    func restoreQuestionOrderSettings() -> Int {
-        guard let data = UserDefaults.standard.data(forKey: questionOrderKey) else { return 0 }
+    func restoreQuestionOrderSettings() -> QuestionsOrder {
+        guard let data = UserDefaults.standard.data(forKey: questionOrderKey) else { return .serial }
 
         do {
-            return try decoder.decode(Int.self, from: data)
+            return try decoder.decode(QuestionsOrder.self, from: data)
         } catch {
             print("Level settings not found error: \(error.localizedDescription)")
-            return 0
+            return .serial
         }
     }
 }

@@ -56,6 +56,13 @@ extension SettingsViewController: SettingsViewDelegate {
     }
 
     func questionOrderChanged(with selectedIndex: Int) {
-        Game.shared.setQuestionOrder(with: selectedIndex)
+        switch selectedIndex {
+            case 0:
+                Game.shared.setQuestionOrder(with: .serial)
+            case 1:
+                Game.shared.setQuestionOrder(with: .random)
+            default:
+                break
+        }
     }
 }
