@@ -84,8 +84,6 @@
 			children = (
 				496711572945EC8F009D43D3 /* Observable */,
 				49E2AD8D293B2DA20007DFC8 /* CareTaker */,
-				496711452944C60E009D43D3 /* GameDifficulty.swift */,
-				496711542945E4BC009D43D3 /* QuestionsOrder.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -310,6 +308,8 @@
 			children = (
 				492A1E94293E0CF3002A7C7A /* Game.swift */,
 				492A1E96293E0D43002A7C7A /* GameSession.swift */,
+				496711452944C60E009D43D3 /* GameDifficulty.swift */,
+				496711542945E4BC009D43D3 /* QuestionsOrder.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
