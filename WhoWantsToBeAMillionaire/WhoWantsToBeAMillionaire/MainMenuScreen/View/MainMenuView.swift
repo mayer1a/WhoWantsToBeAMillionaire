@@ -46,7 +46,8 @@ final class MainMenuView: UIView {
     private var scoreButton: UIButton
     private var scoreLabel: UILabel
     private var settingsButton: UIButton
-    
+    private var addQuestionsButton: UIButton
+
     // MARK: - Constructions
     
     required init() {
@@ -54,6 +55,7 @@ final class MainMenuView: UIView {
         playButton = UIButton()
         scoreButton = UIButton()
         settingsButton = UIButton()
+        addQuestionsButton = UIButton()
 
         super.init(frame: .zero)
         
@@ -103,10 +105,15 @@ final class MainMenuView: UIView {
         settingsButton.setBackgroundImage(UIImage(named: "settings"), for: .normal)
         settingsButton.tag = 2
 
+        addQuestionsButton = buttonTemplate
+        addQuestionsButton.setBackgroundImage(UIImage(named: "addQuestion"), for: .normal)
+        addQuestionsButton.tag = 3
+
         addSubview(playButton)
         addSubview(scoreButton)
         addSubview(scoreLabel)
         addSubview(settingsButton)
+        addSubview(addQuestionsButton)
 
         NSLayoutConstraint.activate([
             playButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 128.0),
@@ -126,7 +133,10 @@ final class MainMenuView: UIView {
             scoreLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
 
             settingsButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
-            settingsButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10)
+            settingsButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10),
+
+            addQuestionsButton.centerYAnchor.constraint(equalTo: settingsButton.centerYAnchor),
+            addQuestionsButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -10)
         ])
     }
     
