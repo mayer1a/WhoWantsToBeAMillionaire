@@ -51,6 +51,8 @@ extension MainMenuViewController: MainMenuViewDelegate {
                 navigationController?.pushViewController(ScoreTableViewController(), animated: true)
             case 2:
                 navigationController?.pushViewController(SettingsViewController(), animated: true)
+            case 3:
+                navigationController?.pushViewController(AddQuestionsViewController(), animated: true)
             default:
                 break
         }
