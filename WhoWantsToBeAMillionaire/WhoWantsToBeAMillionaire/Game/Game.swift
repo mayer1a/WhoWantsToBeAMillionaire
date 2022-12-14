@@ -33,12 +33,18 @@ final class Game {
         }
     }
 
+    private(set) var userQuestions: [Question] {
+        didSet {
+            questionsCareTaker.saveQuestions(userQuestions)
+        }
+    }
+
     var difficultyStrategy: DifficultyStrategy {
         switch difficultyLevel {
             case .easy:
-                return EasyDifficultyQuestionsStrategy()
+                return EasyDifficultyQuestionsStrategy(with: userQuestions)
             case .medium, .hard:
-                return MediumDifficultyQuestionsStrategy()
+                return MediumDifficultyQuestionsStrategy(with: userQuestions)
         }
     }
 
@@ -55,6 +61,7 @@ final class Game {
 
     private let scoresCareTaker = ScoresCareTaker()
     private let settingsCareTaker = SettingsCareTaker()
+    private let questionsCareTaker = QuestionsCareTaker()
 
     // MARK: - Private constructions
 
@@ -62,6 +69,7 @@ final class Game {
         scores = scoresCareTaker.restoreScores()
         difficultyLevel = settingsCareTaker.restoreDifficultySettings()
         questionOrder = settingsCareTaker.restoreQuestionOrderSettings()
+        userQuestions = questionsCareTaker.restoreQuestions()
     }
 
     // MARK: - Functions
@@ -80,6 +88,10 @@ final class Game {
 
     func setQuestionOrder(with value: QuestionsOrder) {
         questionOrder = value
+    }
+
+    func addUsersQuestion(_ questions: [Question]) {
+        userQuestions = questions
     }
 
     func didEndGame(with loss: Bool) {

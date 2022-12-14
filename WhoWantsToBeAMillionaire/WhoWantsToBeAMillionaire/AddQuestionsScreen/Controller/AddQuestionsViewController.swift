@@ -197,6 +197,7 @@ extension AddQuestionsViewController: AddQuestionsTableViewDelegate {
 
     func addQuestionsButtonTapped() {
         let cell = addQuestionsView?.cellForRow(at: IndexPath(row: 0, section: 0)) as? AddQuestionTableViewCell
+        var questions = [Question]()
 
         if cell?.questionTextField.isFirstResponder == false {
             cell?.questionTextField.becomeFirstResponder()
@@ -234,8 +235,10 @@ extension AddQuestionsViewController: AddQuestionsTableViewDelegate {
             }
 
             if let question = question, let correctAnswer = correctAnswer {
-                print(Question(text: question, answers: answers, correctAnswer: correctAnswer))
+                questions.append(Question(text: question, answers: answers, correctAnswer: correctAnswer))
             }
         }
+
+        Game.shared.addUsersQuestion(questions)
     }
 }
