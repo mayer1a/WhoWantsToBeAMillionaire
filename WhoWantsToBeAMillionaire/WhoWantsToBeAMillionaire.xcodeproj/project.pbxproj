@@ -33,6 +33,7 @@
 		496711632945F82B009D43D3 /* AddQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496711622945F82B009D43D3 /* AddQuestionsViewController.swift */; };
 		496711652945F93F009D43D3 /* AddQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496711642945F93F009D43D3 /* AddQuestionTableViewCell.swift */; };
 		4991217F2949FA1100D371DB /* QuestionsCareTaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4991217E2949FA1100D371DB /* QuestionsCareTaker.swift */; };
+		49912182294A0E0300D371DB /* QuestionsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49912181294A0E0300D371DB /* QuestionsBuilder.swift */; };
 		49C80E9729376A4600123107 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C80E9629376A4600123107 /* AppDelegate.swift */; };
 		49C80E9929376A4600123107 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C80E9829376A4600123107 /* SceneDelegate.swift */; };
 		49C80E9B29376A4600123107 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C80E9A29376A4600123107 /* MainMenuViewController.swift */; };
@@ -67,6 +68,7 @@
 		496711622945F82B009D43D3 /* AddQuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuestionsViewController.swift; sourceTree = "<group>"; };
 		496711642945F93F009D43D3 /* AddQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuestionTableViewCell.swift; sourceTree = "<group>"; };
 		4991217E2949FA1100D371DB /* QuestionsCareTaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsCareTaker.swift; sourceTree = "<group>"; };
+		49912181294A0E0300D371DB /* QuestionsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsBuilder.swift; sourceTree = "<group>"; };
 		49C80E9329376A4600123107 /* WhoWantsToBeAMillionaire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhoWantsToBeAMillionaire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49C80E9629376A4600123107 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49C80E9829376A4600123107 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -162,6 +164,14 @@
 				496711622945F82B009D43D3 /* AddQuestionsViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		49912180294A0DDF00D371DB /* QuestionBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				49912181294A0E0300D371DB /* QuestionsBuilder.swift */,
+			);
+			path = QuestionBuilder;
 			sourceTree = "<group>";
 		};
 		49BB23EF29431B9000D7A3D0 /* MainMenuScreen */ = {
@@ -313,6 +323,7 @@
 				49E2AD8C293B2D770007DFC8 /* Fundamental */,
 				49E2AD8E293B2DC90007DFC8 /* Game */,
 				4967114F2945D86E009D43D3 /* Strategies */,
+				49912180294A0DDF00D371DB /* QuestionBuilder */,
 				49C80EA229376A4600123107 /* Assets.xcassets */,
 				49C80EA729376A4600123107 /* Info.plist */,
 				49C80EA429376A4600123107 /* LaunchScreen.storyboard */,
@@ -429,6 +440,7 @@
 				492A1E95293E0CF3002A7C7A /* Game.swift in Sources */,
 				4967114C2944CE7D009D43D3 /* SettingsView.swift in Sources */,
 				496711532945E365009D43D3 /* QuestionOrderStrategy.swift in Sources */,
+				49912182294A0E0300D371DB /* QuestionsBuilder.swift in Sources */,
 				4991217F2949FA1100D371DB /* QuestionsCareTaker.swift in Sources */,
 				492A1EA1293F7216002A7C7A /* SettingsCareTaker.swift in Sources */,
 				492A1E99293E23AA002A7C7A /* Score.swift in Sources */,

@@ -12,6 +12,7 @@ final class AddQuestionsViewController: UIViewController {
     // MARK: - Private properties
 
     private var questionsSectionsNumber: Int = 1
+    private let questionsBuilder = QuestionsBuilder()
 
     private var addQuestionsView: AddQuestionsView? {
         return isViewLoaded ? view as? AddQuestionsView : nil
@@ -56,6 +57,10 @@ final class AddQuestionsViewController: UIViewController {
     }
 
     // MARK: - Private functions
+
+    private func leaveScreenAfterAdding() {
+        navigationController?.popViewController(animated: true)
+    }
 
     @objc private func textFieldEditingChanged(_ sender: UITextField) {
         if sender.text?.first == " " {
@@ -197,7 +202,6 @@ extension AddQuestionsViewController: AddQuestionsTableViewDelegate {
 
     func addQuestionsButtonTapped() {
         let cell = addQuestionsView?.cellForRow(at: IndexPath(row: 0, section: 0)) as? AddQuestionTableViewCell
-        var questions = [Question]()
 
         if cell?.questionTextField.isFirstResponder == false {
             cell?.questionTextField.becomeFirstResponder()
@@ -207,38 +211,40 @@ extension AddQuestionsViewController: AddQuestionsTableViewDelegate {
 
         for sectionNumber in 0..<questionsSectionsNumber {
             let question = addedQuestions[sectionNumber]
-            var answers = [String : Int]()
             let correctAnswer = addedAnswers[sectionNumber]?.removeLast()
-            var percents = 100
-
-            addedAnswers[sectionNumber]?.enumerated().forEach {
-                let answerPercent = Int.random(in: 0...percents)
-
-                if $0.offset == 3 {
-                    answers[$0.element] = percents
-                    return
-                }
-
-                answers[$0.element] = answerPercent
-
-                percents -= answerPercent
-            }
-
-            if answers.count < 4 {
-                cell?.textFieldDuplicateValuesConfigure()
-
-                addedAnswers[sectionNumber] = addedAnswers[sectionNumber]?.compactMap { answer in
-                    String()
-                }
-
-                return
-            }
+            var totalProbability = 100
 
             if let question = question, let correctAnswer = correctAnswer {
-                questions.append(Question(text: question, answers: answers, correctAnswer: correctAnswer))
+                questionsBuilder.setCorrectAnswer(correctAnswer)
+                questionsBuilder.setQuestion(question)
+            }
+
+            addedAnswers[sectionNumber]?.enumerated().forEach { (offset, answer) in
+                let answerProbability = Int.random(in: 0...totalProbability)
+
+                questionsBuilder.setAnswer(answer, withProbability: offset == 3 ? totalProbability : answerProbability)
+
+                totalProbability -= answerProbability
             }
         }
 
-        Game.shared.addUsersQuestion(questions)
+        do {
+            let buildedQuestions = try questionsBuilder.build()
+            Game.shared.addUsersQuestion(buildedQuestions)
+            leaveScreenAfterAdding()
+        } catch QuestionBuilderError.buildError(let error) {
+            print(error)
+        } catch QuestionBuilderError.answersCountError(let answersErrorIndex) {
+            print("Error: two identical answers were entered")
+
+            addedAnswers[answersErrorIndex] = ["", "", "", ""]
+            cell?.textFieldDuplicateValuesConfigure()
+
+            navigationItem.rightBarButtonItem?.isEnabled = false
+        } catch {
+            print("Other error...")
+        }
+
+        questionsBuilder.clearBuilder()
     }
 }
