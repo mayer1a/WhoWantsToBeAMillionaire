@@ -65,6 +65,25 @@ final class AddQuestionTableViewCell: UITableViewCell {
         layer.borderColor = UIColor(named: "hintLabelColor")?.cgColor
     }
 
+    // MARK: - Function
+
+    func textFieldDuplicateValuesConfigure() {
+        answersTextFields.forEach { textField in
+            textField.text = ""
+            textField.placeholder = "Ответы не могут повторяться"
+        }
+
+        layer.borderColor = UIColor.systemRed.cgColor
+    }
+
+    func textFieldDefaultConfigure() {
+        answersTextFields.enumerated().forEach { (offset, textField) in
+            textField.placeholder = "Вариант ответа №\(offset + 1) ..."
+        }
+
+        layer.borderColor = UIColor(named: "hintLabelColor")?.cgColor
+    }
+
     // MARK: - Private functions
 
     private func configureViewComponents() {
@@ -84,19 +103,19 @@ final class AddQuestionTableViewCell: UITableViewCell {
         contentView.addSubview(questionTextField)
 
         for buttonNumber in 0..<5 {
-            let answerButton = textFieldTemplate
+            let answerTextField = textFieldTemplate
 
-            contentView.addSubview(answerButton)
+            contentView.addSubview(answerTextField)
 
-            answersTextFields.append(answerButton)
+            answersTextFields.append(answerTextField)
 
             switch buttonNumber {
                 case 4:
-                    answerButton.placeholder = "Введите правильный ответ ..."
+                    answerTextField.placeholder = "Введите правильный ответ ..."
 
                     createButtonConstraints(with: buttonNumber)
                 default:
-                    answerButton.placeholder = "Вариант ответа №\(buttonNumber + 1) ..."
+                    answerTextField.placeholder = "Вариант ответа №\(buttonNumber + 1) ..."
 
                     createButtonConstraints(with: buttonNumber)
             }

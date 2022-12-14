@@ -79,6 +79,10 @@ final class AddQuestionsViewController: UIViewController {
                 return
             }
 
+            if cell.layer.borderColor == UIColor.systemRed.cgColor {
+                cell.textFieldDefaultConfigure()
+            }
+
             for textField in cell.answersTextFields {
                 if textField.text?.isEmpty == true {
                     navigationItem.rightBarButtonItem?.isEnabled = false
@@ -200,13 +204,13 @@ extension AddQuestionsViewController: AddQuestionsTableViewDelegate {
             cell?.questionTextField.resignFirstResponder()
         }
 
-        for i in 0..<questionsSectionsNumber {
-            let question = addedQuestions[i]
+        for sectionNumber in 0..<questionsSectionsNumber {
+            let question = addedQuestions[sectionNumber]
             var answers = [String : Int]()
-            let correctAnswer = addedAnswers[i]?.removeLast()
+            let correctAnswer = addedAnswers[sectionNumber]?.removeLast()
             var percents = 100
 
-            addedAnswers[i]?.enumerated().forEach {
+            addedAnswers[sectionNumber]?.enumerated().forEach {
                 let answerPercent = Int.random(in: 0...percents)
 
                 if $0.offset == 3 {
@@ -217,6 +221,16 @@ extension AddQuestionsViewController: AddQuestionsTableViewDelegate {
                 answers[$0.element] = answerPercent
 
                 percents -= answerPercent
+            }
+
+            if answers.count < 4 {
+                cell?.textFieldDuplicateValuesConfigure()
+
+                addedAnswers[sectionNumber] = addedAnswers[sectionNumber]?.compactMap { answer in
+                    String()
+                }
+
+                return
             }
 
             if let question = question, let correctAnswer = correctAnswer {
