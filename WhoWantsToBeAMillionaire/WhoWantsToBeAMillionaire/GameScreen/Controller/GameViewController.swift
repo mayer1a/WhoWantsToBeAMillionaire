@@ -14,8 +14,10 @@ protocol GameSessionDelegate: AnyObject {
     var hintsAvailable: [Hint] { get }
     var coinsEarned: Int { get }
     var scores: Int { get }
+    var currentQuestion: Question {get set }
+
     func increaseCorrectAnswersNumber()
-    func removeUsedHint(of hint: Hint)
+    func useHint(_ hintIndex: Int)
 }
 
 final class GameViewController: UIViewController {
@@ -55,12 +57,12 @@ final class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        Game.shared.gameSession = GameSession()
+        Game.shared.gameSession = GameSession(with: questions[currentQuestion], hintUsageFacadeDelegate: self)
+
+        gameView?.delegate = self
 
         gameSessionDelegate = Game.shared.gameSession.self
-        gameView?.delegate = self
         gameSessionDelegate?.totalQuestionsNumber = orderedQuestions.count
-
         gameSessionDelegate?.correctAnswers.addObserver(self, options: [.initial, .new]) { [weak self] (correctAnswers, _) in
 
             guard
@@ -96,105 +98,13 @@ final class GameViewController: UIViewController {
         gameView?.questionLabel.text = question.text
         gameView?.questionCounterLabelConfigure(with: newCounterLabelValue)
 
+        gameSessionDelegate?.currentQuestion = question
+
         for (index, answer) in question.answers.enumerated() {
 
             gameView?.answerButtons[index].setTitle(answer.key, for: .normal)
             gameView?.answerButtons[index].updateConstraints()
         }
-    }
-
-    private func useFiftyFiftyHint() {
-        var counter = 0
-        var previouslyNumber = -1
-
-        while counter != 2 {
-            let number = Int.random(in: 0...3)
-            let userAnswer = gameView?.answerButtons[number].titleLabel?.text
-
-            guard
-                number != previouslyNumber,
-                userAnswer != orderedQuestions[currentQuestion].correctAnswer
-            else { continue }
-
-            gameView?.answerButtonCofigure(by: number)
-            previouslyNumber = number
-            counter += 1
-        }
-    }
-
-    private func useAuditoryHelpHint() {
-        var text = String()
-
-        gameView?.answerButtons.enumerated().forEach { (index, button) in
-            guard
-                let answer = button.titleLabel?.text,
-                let percent = orderedQuestions[currentQuestion].answers[answer]
-            else { return }
-
-            text += "\tЗа \"\(answer)\" --> \(percent)% зала\n"
-        }
-
-        text.removeLast(2)
-
-        gameView?.percentAnswerLabelCofigure(with: text)
-        gameView?.percentsLabelView.isHidden = false
-    }
-
-    private func useCallFriendHint() {
-        let version = Int.random(in: 0..<90)
-        var friendAnswer = String()
-
-        switch version {
-            case 0..<30:
-                friendAnswer = getIncorrectFriendAnswer()
-            case 30..<60:
-                friendAnswer = getPartialIncorrectFriendAnswer()
-            case 60..<90:
-                friendAnswer = getFullCorrectFriendAnswer()
-            default:
-                break
-        }
-
-        gameView?.percentAnswerLabelCofigure(with: friendAnswer)
-        gameView?.percentsLabelView.isHidden = false
-    }
-
-    private func getIncorrectFriendAnswer() -> String {
-        var answers = [String]()
-
-        while answers.count != 2 {
-            let number = Int.random(in: 0...3)
-            let userAnswer = gameView?.answerButtons[number].titleLabel?.text
-
-            guard userAnswer != answers.first else { continue }
-
-            answers.append(userAnswer ?? " ")
-        }
-
-        return "Привет! Я не знаю ответа на этот вопрос 🙁\nМожет ответ «\(answers[0])» или «\(answers[1])»"
-    }
-
-    private func getPartialIncorrectFriendAnswer() -> String {
-        var incorrectNumber = -1
-
-        while incorrectNumber < 0 {
-            let number = Int.random(in: 0...3)
-            let userAnswer = gameView?.answerButtons[number].titleLabel?.text
-
-            if userAnswer != orderedQuestions[currentQuestion].correctAnswer {
-                incorrectNumber = number
-            }
-        }
-
-        var answers: Set<String> = [gameView?.answerButtons[incorrectNumber].titleLabel?.text ?? "",
-                                    orderedQuestions[currentQuestion].correctAnswer]
-
-        return "Привет! Я уверен, что это либо «\(answers.popFirst() ?? "")», либо «\(answers.popFirst() ?? "")» 🙂"
-    }
-
-    private func getFullCorrectFriendAnswer() -> String {
-        let correctAnswer = orderedQuestions[currentQuestion].correctAnswer
-        return "Привет! Прямо в точку, я знаю ответ! 😋\nПравильный вариант - это «\(correctAnswer)»"
     }
 }
 
@@ -232,28 +142,31 @@ extension GameViewController: GameViewDelegate {
     }
 
     func hintButtonsTapped(with tag: Int) {
-        switch tag {
-            case Hint.fiftyFifty.rawValue:
-                useFiftyFiftyHint()
-                gameSessionDelegate?.removeUsedHint(of: Hint.fiftyFifty)
-            case Hint.auditoryHelp.rawValue:
-                useAuditoryHelpHint()
-                gameSessionDelegate?.removeUsedHint(of: Hint.auditoryHelp)
-            case Hint.callFriend.rawValue:
-                useCallFriendHint()
-                gameSessionDelegate?.removeUsedHint(of: Hint.callFriend)
-            default:
-                break
-        }
+        gameSessionDelegate?.useHint(tag)
     }
 }
 
 extension GameViewController: GameViewControllerDelegate {
-    
+
     var hints: [String] {
         get {
             let question = orderedQuestions[currentQuestion]
             return [question.fiftyTofiftyHint, question.auditoryHelpHint, question.callFriendHint]
         }
+    }
+}
+
+extension GameViewController: HintUsageFacadeDelegate {
+
+    func callFriend(friendAnswer: String) {
+        gameView?.percentAnswerLabelCofigure(with: friendAnswer)
+    }
+    
+    func useAuditoryHelp(auditoryAnswer: String) {
+        gameView?.percentAnswerLabelCofigure(with: auditoryAnswer)
+    }
+
+    func useFiftyFiftyHint(_ answers: [String]) {
+        gameView?.answerButtonCofigure(by: answers)
     }
 }
