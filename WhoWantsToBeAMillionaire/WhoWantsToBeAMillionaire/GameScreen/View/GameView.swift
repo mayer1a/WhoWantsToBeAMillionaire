@@ -71,7 +71,6 @@ final class GameView: UIView {
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.systemBlue.cgColor
         button.addTarget(self, action: #selector(self.answerButtonTapped), for: .touchUpInside)
-        //        button.translatesAutoresizingMaskIntoConstraints = false
 
         return button
     }
@@ -138,16 +137,21 @@ final class GameView: UIView {
 
     // MARK: - Functions
 
-    func questionCounterLabelConfigure(with value: (questionNumber: Int, totalQuestion: Int)) {
-        questionCounterLabel.text = "Вопрос \(value.questionNumber + 1) из \(value.totalQuestion)"
+    func questionCounterLabelConfigure(with value: (questionNumber: Int, totalQuestion: Int, scores: Int)) {
+        questionCounterLabel.text = "Вопрос \(value.questionNumber + 1) из \(value.totalQuestion) (\(value.scores)%)"
     }
 
-    func answerButtonCofigure(by index: Int) {
-        answerButtons[index].setTitle(" ", for: .normal)
+    func answerButtonCofigure(by answers: [String]) {
+        answerButtons.forEach { answerButton in
+            if answerButton.currentTitle == answers.first || answerButton.currentTitle == answers.last {
+                answerButton.setTitle(" ", for: .normal)
+            }
+        }
     }
 
     func percentAnswerLabelCofigure(with text: String) {
         percentsAnswersLabel.text = text
+        percentsLabelView.isHidden = false
     }
 
     // MARK: - Private functions

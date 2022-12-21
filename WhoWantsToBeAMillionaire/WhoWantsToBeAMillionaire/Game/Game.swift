@@ -21,22 +21,55 @@ final class Game {
         }
     }
 
-    private(set) var isHardcoreLevel: Bool {
+    private(set) var difficultyLevel: GameDifficulty {
         didSet {
-            settingCareTaker.saveSettings(isHardcoreLevel: isHardcoreLevel)
+            settingsCareTaker.saveDifficultySettings(difficultyLevel)
+        }
+    }
+
+    private(set) var questionOrder: QuestionsOrder {
+        didSet {
+            settingsCareTaker.saveQuestionOrderSettings(questionOrder)
+        }
+    }
+
+    private(set) var userQuestions: [Question] {
+        didSet {
+            questionsCareTaker.saveQuestions(userQuestions)
+        }
+    }
+
+    var difficultyStrategy: DifficultyStrategy {
+        switch difficultyLevel {
+            case .easy:
+                return EasyDifficultyQuestionsStrategy(with: userQuestions)
+            case .medium, .hard:
+                return MediumDifficultyQuestionsStrategy(with: userQuestions)
+        }
+    }
+
+    var orderStrategy: QuestionOrderStrategy {
+        switch questionOrder {
+            case .serial:
+                return SeialQuestionsOrderStrategy()
+            case .random:
+                return RandomQuestionsOrderStrategy()
         }
     }
 
     // MARK: - Private properties
 
     private let scoresCareTaker = ScoresCareTaker()
-    private let settingCareTaker = SettingCareTaker()
+    private let settingsCareTaker = SettingsCareTaker()
+    private let questionsCareTaker = QuestionsCareTaker()
 
     // MARK: - Private constructions
 
     private init() {
         scores = scoresCareTaker.restoreScores()
-        isHardcoreLevel = settingCareTaker.restoreSettings()
+        difficultyLevel = settingsCareTaker.restoreDifficultySettings()
+        questionOrder = settingsCareTaker.restoreQuestionOrderSettings()
+        userQuestions = questionsCareTaker.restoreQuestions()
     }
 
     // MARK: - Functions
@@ -49,8 +82,16 @@ final class Game {
         scores = []
     }
 
-    func toggleGameLevel() {
-        isHardcoreLevel.toggle()
+    func setDifficultyStrategy(with difficulty: GameDifficulty) {
+        difficultyLevel = difficulty
+    }
+
+    func setQuestionOrder(with value: QuestionsOrder) {
+        questionOrder = value
+    }
+
+    func addUsersQuestion(_ questions: [Question]) {
+        userQuestions = questions
     }
 
     func didEndGame(with loss: Bool) {
@@ -59,10 +100,10 @@ final class Game {
         var coins = Int()
 
         if loss {
-            switch gameSession.correctAnswers {
-                case 3..<6: coins = gameSession.coinsRange[gameSession.correctAnswers - 1]
-                case 6..<8: coins = gameSession.coinsRange[gameSession.correctAnswers - 1]
-                case 8...10: coins = gameSession.coinsRange[gameSession.correctAnswers - 1]
+            switch gameSession.correctAnswers.value {
+                case 3..<6: coins = gameSession.coinsRange[gameSession.correctAnswers.value - 1]
+                case 6..<8: coins = gameSession.coinsRange[gameSession.correctAnswers.value - 1]
+                case 8...10: coins = gameSession.coinsRange[gameSession.correctAnswers.value - 1]
                 default: break
             }
         } else {
@@ -74,7 +115,7 @@ final class Game {
                           score: gameSession.scores,
                           coins: coins,
                           usedHintsNumber: usedHintsNumber,
-                          isHardcoreLevel: isHardcoreLevel)
+                          difficultyLevel: difficultyLevel)
 
         addScoreEntry(score)
 
