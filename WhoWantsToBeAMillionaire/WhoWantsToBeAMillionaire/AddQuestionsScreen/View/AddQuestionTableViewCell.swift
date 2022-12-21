@@ -12,13 +12,9 @@ final class AddQuestionTableViewCell: UITableViewCell {
     // MARK: - Properties
 
     static let cellId = "QuestionsTableCell"
-    var questionTextField: UITextField
-    var answersTextFields: [UITextField]
 
-    // MARK: - Private properties
-
-    private var textFieldTemplate: UITextField {
-        let textField = UITextField(frame: CGRect(x: 0, y: 0, width: 0, height: 44))
+    var questionTextField: CustomCopyingUITextField = {
+        let textField = CustomCopyingUITextField(frame: CGRect(x: 0, y: 0, width: 0, height: 44))
         textField.textAlignment = .left
         textField.font = UIFont.systemFont(ofSize: 20.0, weight: .medium)
         textField.textColor = UIColor(named: "helpTextColor")
@@ -31,13 +27,14 @@ final class AddQuestionTableViewCell: UITableViewCell {
         textField.translatesAutoresizingMaskIntoConstraints = false
 
         return textField
-    }
+    }()
+
+    var answersTextFields: [CustomCopyingUITextField]
 
     // MARK: - Construction
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        questionTextField = UITextField()
-        answersTextFields = [UITextField]()
+        answersTextFields = [CustomCopyingUITextField]()
 
         super.init(style: .value1, reuseIdentifier: reuseIdentifier)
 
@@ -94,16 +91,10 @@ final class AddQuestionTableViewCell: UITableViewCell {
         accessoryType = .none
         editingAccessoryType = .none
 
-        questionTextField = textFieldTemplate
-        let attributes = [NSAttributedString.Key.foregroundColor : UIColor(named: "helpTextColor") ?? UIColor.black]
-        let attributedString = NSAttributedString(string: "Введите вопрос ...", attributes: attributes)
-
-        questionTextField.attributedPlaceholder = attributedString
-
         contentView.addSubview(questionTextField)
 
         for buttonNumber in 0..<5 {
-            let answerTextField = textFieldTemplate
+            let answerTextField = questionTextField.getCopy()
 
             contentView.addSubview(answerTextField)
 
@@ -120,6 +111,11 @@ final class AddQuestionTableViewCell: UITableViewCell {
                     createButtonConstraints(with: buttonNumber)
             }
         }
+
+        let attributes = [NSAttributedString.Key.foregroundColor : UIColor(named: "helpTextColor") ?? UIColor.black]
+        let attributedString = NSAttributedString(string: "Введите вопрос ...", attributes: attributes)
+
+        questionTextField.attributedPlaceholder = attributedString
 
         NSLayoutConstraint.activate([
             questionTextField.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
@@ -148,7 +144,7 @@ final class AddQuestionTableViewCell: UITableViewCell {
         }
 
         let previousButton = answersTextFields[index - 1]
-        
+
         NSLayoutConstraint.activate([
             currentButton.topAnchor.constraint(equalTo: previousButton.bottomAnchor, constant: 0),
             currentButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
