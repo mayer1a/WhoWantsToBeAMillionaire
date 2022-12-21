@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		490A5DB529534719002256A8 /* Copying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490A5DB429534719002256A8 /* Copying.swift */; };
 		492A1E5C293B3D70002A7C7A /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A1E5B293B3D70002A7C7A /* Question.swift */; };
 		492A1E84293B7BB2002A7C7A /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A1E83293B7BB2002A7C7A /* MainMenuView.swift */; };
 		492A1E86293CB95C002A7C7A /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A1E85293CB95C002A7C7A /* GameViewController.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		490A5DB429534719002256A8 /* Copying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Copying.swift; sourceTree = "<group>"; };
 		492A1E5B293B3D70002A7C7A /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		492A1E83293B7BB2002A7C7A /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		492A1E85293CB95C002A7C7A /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -91,9 +93,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		490A5DB329534702002256A8 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				490A5DB429534719002256A8 /* Copying.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		496711432944C5C2009D43D3 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				490A5DB329534702002256A8 /* Protocol */,
 				496711572945EC8F009D43D3 /* Observable */,
 				49E2AD8D293B2DA20007DFC8 /* CareTaker */,
 			);
@@ -443,6 +454,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49912185294B0C3D00D371DB /* HintUsageFacade.swift in Sources */,
+				490A5DB529534719002256A8 /* Copying.swift in Sources */,
 				492A1E91293DDF6A002A7C7A /* ScoreTableViewController.swift in Sources */,
 				492A1E9B293E613D002A7C7A /* ScoresCareTaker.swift in Sources */,
 				4967114E2944CE8F009D43D3 /* SettingsViewController.swift in Sources */,
