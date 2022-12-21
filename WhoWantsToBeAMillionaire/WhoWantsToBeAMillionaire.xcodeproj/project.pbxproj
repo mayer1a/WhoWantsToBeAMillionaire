@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		490A5DB529534719002256A8 /* Copying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490A5DB429534719002256A8 /* Copying.swift */; };
+		490A5DB729534759002256A8 /* CustomCopyingUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490A5DB629534759002256A8 /* CustomCopyingUITextField.swift */; };
 		492A1E5C293B3D70002A7C7A /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A1E5B293B3D70002A7C7A /* Question.swift */; };
 		492A1E84293B7BB2002A7C7A /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A1E83293B7BB2002A7C7A /* MainMenuView.swift */; };
 		492A1E86293CB95C002A7C7A /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A1E85293CB95C002A7C7A /* GameViewController.swift */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		490A5DB429534719002256A8 /* Copying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Copying.swift; sourceTree = "<group>"; };
+		490A5DB629534759002256A8 /* CustomCopyingUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCopyingUITextField.swift; sourceTree = "<group>"; };
 		492A1E5B293B3D70002A7C7A /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		492A1E83293B7BB2002A7C7A /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		492A1E85293CB95C002A7C7A /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			children = (
 				496711602945F819009D43D3 /* AddQuestionsView.swift */,
 				496711642945F93F009D43D3 /* AddQuestionTableViewCell.swift */,
+				490A5DB629534759002256A8 /* CustomCopyingUITextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 				49C80E9B29376A4600123107 /* MainMenuViewController.swift in Sources */,
 				496711552945E4BC009D43D3 /* QuestionsOrder.swift in Sources */,
 				492A1E9F293EEFFE002A7C7A /* HelpPageView.swift in Sources */,
+				490A5DB729534759002256A8 /* CustomCopyingUITextField.swift in Sources */,
 				49C80E9729376A4600123107 /* AppDelegate.swift in Sources */,
 				496711462944C60E009D43D3 /* GameDifficulty.swift in Sources */,
 				492A1E88293CB9B8002A7C7A /* GameView.swift in Sources */,
